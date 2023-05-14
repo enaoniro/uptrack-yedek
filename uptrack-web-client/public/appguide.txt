@@ -1,0 +1,15 @@
+1-tasklar assign edilebilmeli
+2-tasklarin baslangic ve bitis tarihleri olmali
+3-assign edilen tasklar notification email le kisiye bildirilmeli
+4-bitirilen tasklar bitirildi diye managera emaille bildirilmeli
+5-bitirilmeyen tasklar yine bildirilmeli
+6-dadlinedan bir gun once hatirlatma mailloi gelmeli
+7-tum tasklar ve assigned personel tablosu olmali
+8-btirilen ve devam eden tasklar tablosu olmali
+9- bitirilmeyen tasklar redlist devam edenler mavi bitenler yesil son gun olanlar sari list olmali
+10-employee sayfasi ayri olmali
+11-task sayfasi ayri olmali
+12-jwt ile access suresi sinirlandirilmali
+13-mongodb kullanilmali
+14-typescript kullanilmali
+15-
