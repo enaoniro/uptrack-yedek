@@ -32,6 +32,10 @@ const Student = sequelize.define('Student', {
       allowNull:false,
 
   },
+  img: {
+    type: DataTypes.STRING,
+    allowNull:true
+  },
   GroupId: {
     type: DataTypes.INTEGER,
     allowNull:false,

@@ -1,17 +1,12 @@
-import Group from '../models/GroupModel.js';
-import Canton from '../models/CantonModel.js';
-import Student from '../models/StudentModel.js';
-
+import Group from "../models/GroupModel.js";
+import Canton from "../models/CantonModel.js";
+import Student from "../models/StudentModel.js";
 
 const getGroupList = async () => {
-  
-    return await Group.findAll({
-      include: Student
-      
-    });
-  
-  };
-
+  return await Group.findAll({
+    include: Student,
+  });
+};
 
 const createGroup = async (pGroup) => {
   try {
@@ -53,4 +48,3 @@ export default {
   updateGroup,
   deleteGroup,
 };
-  

@@ -8,13 +8,12 @@ const getStudentWithTask = async (pId) => {
     where: {
       StudentId: pId,
     },
-  
   });
 };
 
 const getTaskList = async () => {
   return await Task.findAll({
-   include:[Target]
+    include: [Target],
   });
 };
 
@@ -40,7 +39,7 @@ async function createTask(pTask) {
   } catch (error) {
     console.log(error);
   }
- };
+}
 
 async function updateTask(pId, pTask) {
   try {
@@ -48,16 +47,14 @@ async function updateTask(pId, pTask) {
       where: {
         id: pId,
       },
-    
     });
-    
+
     task.set({
       task1: pTask.task1,
       task2: pTask.task2,
       task3: pTask.task3,
       task4: pTask.task4,
       task5: pTask.task5,
-      
     });
     return await task.save();
   } catch (error) {

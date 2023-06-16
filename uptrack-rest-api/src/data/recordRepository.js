@@ -13,8 +13,7 @@ const getStudentWithRecord = async (pStudent) => {
 
 const getRecordList = async () => {
   return await Record.findAll();
-    // include: Target
-    
+  // include: Target
 };
 
 const createRecord = async (pRecord) => {
@@ -29,7 +28,7 @@ async function updateRecord(pId, pRecord) {
   try {
     let record = await Record.findByPk(pId);
     record.set({
-     task1: pRecord.task1,
+      task1: pRecord.task1,
       task2: pRecord.task2,
       task3: pRecord.task3,
       task4: pRecord.task4,

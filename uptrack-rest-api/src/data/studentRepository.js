@@ -45,7 +45,6 @@ const getStudentById = async (pId) => {
 const getStudentList = async () => {
   return await Student.findAll({
     include: [Task],
-    
   });
 };
 

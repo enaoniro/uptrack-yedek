@@ -1,13 +1,12 @@
-import { Sequelize , DataTypes } from 'sequelize';
+import { Sequelize, DataTypes } from "sequelize";
 // import sequelize from "../commons/sequelize.js"
 
-const sequelize = new Sequelize('users', 'root', '50473524su', {
-  host: 'localhost',
-  dialect: 'mysql',
+const sequelize = new Sequelize("users", "root", "50473524su", {
+  host: "localhost",
+  dialect: "mysql",
 });
 
-
-const Role = sequelize.define('Roles', {
+const Role = sequelize.define("Roles", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -16,9 +15,12 @@ const Role = sequelize.define('Roles', {
   name: {
     type: DataTypes.STRING,
     allowNull: false,
-  },
- 
+  }
+},
 
+{
+  timestamps: false,
+  createdAt: false
 });
 
 await sequelize.sync({ alter: true });

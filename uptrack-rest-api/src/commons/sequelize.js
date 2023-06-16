@@ -1,20 +1,21 @@
+import 'dotenv/config';
 import { Sequelize, DataTypes, Model  } from 'sequelize';
 import User from '../models/UserModel.js';
 import Role from '../models/RoleModel.js';
 import Record from '../models/RecordModel.js';
-import Target from '../models/TargetModel.js';
-import Task from '../models/TaskModel.js';
 import Student from '../models/StudentModel.js';
+import Target from '../models/TargetModel.js';
 import Canton from '../models/CantonModel.js';
 import Group from '../models/GroupModel.js';
+import Task from '../models/TaskModel.js';
 
 
-const password = process.env.REACT_APP_PASSWORD
+const password = process.env.REACT_APP_PASSWORD;
 
 
 
 
-const sequelize = new Sequelize('users', 'root', '50473524su', {
+const sequelize = new Sequelize('users', 'root', password, {
   host: 'localhost',
   dialect: 'mysql',
 });
@@ -220,7 +221,7 @@ const connectToDatabase = async () => {
         await Task.sync();
         await Target.sync();
         await Record.sync();
-        console.log('Connected!');
+        console.log('Connected to database!');
     } catch (err) {
         console.log(err);
     }

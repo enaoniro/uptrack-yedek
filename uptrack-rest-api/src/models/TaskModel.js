@@ -1,62 +1,61 @@
-import { Sequelize , DataTypes } from 'sequelize';
+import { Sequelize, DataTypes } from "sequelize";
 import Student from "./StudentModel.js";
 import Target from "./TargetModel.js";
-import Record from './RecordModel.js';
+import Record from "./RecordModel.js";
 // import sequelize from "../commons/sequelize.js"
 
-const sequelize = new Sequelize('users', 'root', '50473524su', {
-  host: 'localhost',
-  dialect: 'mysql',
+const sequelize = new Sequelize("users", "root", "50473524su", {
+  host: "localhost",
+  dialect: "mysql",
 });
 
-const Task = sequelize.define('Task', {
-  id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true,
-  },
-  task1: {
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
-  task2: {
+const Task = sequelize.define(
+  "Task",
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    task1: {
       type: DataTypes.STRING,
-      allowNull:true,
+      allowNull: true,
+    },
+    task2: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    task3: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    task4: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    task5: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    StudentId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+
+    // StudentId: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: 'Student',
+    //     key: 'id',
+    //     as: 'StudentId'
+    //   }
+    // }
   },
-  task3: {
-    type: DataTypes.STRING,
-    allowNull:true,
-},
-task4: {
-    type: DataTypes.STRING,
-    allowNull:true,
-},
-task5: {
-    type: DataTypes.STRING,
-    allowNull:true,
-},
-StudentId: {
-  type: DataTypes.INTEGER,
-  allowNull:false,
-  
-},
-
-// StudentId: {
-//   type: DataTypes.INTEGER,
-//   references: {
-//     model: 'Student',
-//     key: 'id',
-//     as: 'StudentId'
-//   }
-// }
-
-},
   {
     timestamps: true,
-    
-  });
+  }
+);
 
-  
 //   Task.associate = (models) => {
 //    Task.belongsTo(models.Student, {
 //      foreignKey: {
@@ -70,7 +69,6 @@ StudentId: {
 Student.hasMany(Task);
 Task.belongsTo(Student);
 
-
 // Student.hasMany(Task);
 // Task.hasMany(Target);
 // Target.belongsTo(Task);
@@ -81,5 +79,4 @@ Task.belongsTo(Student);
 
 await sequelize.sync({ alter: true });
 
- 
 export default Task;

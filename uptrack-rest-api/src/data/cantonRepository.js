@@ -1,15 +1,11 @@
-import Canton from '../models/CantonModel.js';
-import Group from '../models/GroupModel.js';
-
+import Canton from "../models/CantonModel.js";
+import Group from "../models/GroupModel.js";
 
 const getCantonList = async () => {
-
-    return await Canton.findAll({
-      include: Group
-    });
-  
+  return await Canton.findAll({
+    include: Group,
+  });
 };
-
 
 const createCanton = async (pCanton) => {
   try {
@@ -45,11 +41,10 @@ const deleteCanton = async (pId) => {
 };
 
 export default {
-//   getCantonWithRole,
-//   isCantonExisting,
+  //   getCantonWithRole,
+  //   isCantonExisting,
   getCantonList,
   createCanton,
   updateCanton,
   deleteCanton,
 };
-  

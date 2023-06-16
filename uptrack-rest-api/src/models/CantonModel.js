@@ -30,6 +30,14 @@ const Canton = sequelize.define('Canton', {
     createdAt: false
   });
 
+//    Canton.associate = (models) => {
+//  Canton.hasMany(models.Group, {
+//    foreignKey: {
+//      name: 'CantonId',
+//      allowNull: false
+//    },
+//    as: 'groups'
+//  });}
 // Group.belongsTo(Canton);
 // Canton.hasMany(Group);
 
