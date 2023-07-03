@@ -17,10 +17,10 @@ const getTasks = async () => {
   return taskList;
 };
 
-// const getStudentTask = async (pId) => {
-//   const studenttasks = await TaskRepository.getStudentWithTask(pId);
-//   return studenttasks;
-// }
+const getTasksByStudentId = async (studentId) => {
+  const studenttasks = await TaskRepository.getStudentWithTask(studentId);
+  return studenttasks;
+}
 
 const addTask = async (pTask) => {
   // const taskList = await TaskRepository.getTaskList();
@@ -32,15 +32,20 @@ const updateTask = async (pId, pTask) => {
   return await TaskRepository.updateTask(pId, pTask);
 };
 
+const updateTaskCompleted = async (pId, pTask) => {
+  return await TaskRepository.updateTaskComplete(pId, pTask);
+};
+
 const deleteTask = async (pId) => {
   await TaskRepository.deleteTask(pId);
 };
 
 export default {
-  // getStudentTask,
+  getTasksByStudentId,
   checkTask,
   getTasks,
   addTask,
   updateTask,
   deleteTask,
+  updateTaskCompleted,
 };

@@ -1,5 +1,6 @@
 import { Sequelize, DataTypes } from "sequelize";
 import Target from "./TargetModel.js";
+import Task from "./TaskModel.js";
 // import sequelize from "../commons/sequelize.js"
 
 const sequelize = new Sequelize("users", "root", "50473524su", {
@@ -17,25 +18,25 @@ const Record = sequelize.define(
     },
     task1: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     task2: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     task3: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     task4: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     task5: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
-    TargetId: {
+    TaskId: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -46,8 +47,8 @@ const Record = sequelize.define(
   }
 );
 
-Target.hasMany(Record);
-// Record.belongsTo(Target);
+Task.hasMany(Record);
+Record.belongsTo(Task);
 // Record.hasMany(Task)
 // Task.belongsTo(Record)
 //  Record.belongsToMany(Task, {'through': 'task_Record'});

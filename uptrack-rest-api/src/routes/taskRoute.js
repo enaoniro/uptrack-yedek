@@ -11,8 +11,8 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  const taskId = req.params.id;
-  const task = await TaskService.getTasks(taskId);
+  const studentId = req.params.id;
+  const task = await TaskService.getTasksByStudentId(studentId);
   res.status(200).send(task);
 });
 
@@ -32,6 +32,14 @@ router.put("/:id", async (req, res) => {
   const taskId = req.params.id;
   const existingTask = req.body;
   const updatedTask = await TaskService.updateTask(taskId, existingTask);
+
+  res.status(200).send(updatedTask);
+});
+
+router.put("/settask/:id", async (req, res) => {
+  const taskId = req.params.id;
+  const existingTask = req.body;
+  const updatedTask = await TaskService.updateTaskCompleted(taskId, existingTask);
 
   res.status(200).send(updatedTask);
 });

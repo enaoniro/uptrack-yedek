@@ -47,7 +47,7 @@ TaskId: {
   });
 
   Task.hasOne(Target);
-  // Target.belongsTo(Task);
+  Target.belongsTo(Task);
  
 
 await sequelize.sync({ alter: true });

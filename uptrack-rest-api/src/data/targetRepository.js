@@ -14,7 +14,7 @@ const getStudentWithTarget = async (pStudent) => {
 
 const getTargetList = async () => {
   return await Target.findAll({
-    include: [Record],
+    // include: [Record],
   });
 };
 

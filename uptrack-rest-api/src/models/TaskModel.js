@@ -42,14 +42,16 @@ const Task = sequelize.define(
       allowNull: false,
     },
 
-    // StudentId: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: 'Student',
-    //     key: 'id',
-    //     as: 'StudentId'
-    //   }
-    // }
+    isCompleted: {
+      type: DataTypes.BOOLEAN,
+      defaultValue:false,
+      // allowNull:true,
+    },
+    // isSuccess: {
+    //   type: DataTypes.BOOLEAN,
+    //default: false
+    //  
+    // },
   },
   {
     timestamps: true,

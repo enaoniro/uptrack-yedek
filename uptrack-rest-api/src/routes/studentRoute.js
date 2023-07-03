@@ -12,11 +12,11 @@ router.get('/', async (req, res) => {
   res.status(200).send(studentList);
 });
 
-router.get('/:groupId', async (req, res) => {
-  const GroupId = req.params.groupId;
-  const studentList = await studentService.getStudentsByGroup(GroupId);
-  res.status(200).send(studentList);
-});
+// router.get('/:groupId', async (req, res) => {
+//   const GroupId = req.params.groupId;
+//   const studentList = await studentService.getStudentsByGroup(GroupId);
+//   res.status(200).send(studentList);
+// });
 
 router.get('/:studentId', async (req, res) => {
   const studentId = req.params.studentId;
