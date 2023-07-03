@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { RecordContext } from "../contexts/RecordContext";
 import SingleStudent from "./SingleStudent";
 
-const AddRecord = () => {
+const AddRecord = ({task}) => {
   const [record, setRecord] = useState({});
   const [recordList, setRecordList] = useState([]);
   const [ navigate,setNavigate] = useState();
@@ -20,10 +20,11 @@ const AddRecord = () => {
   };
 
   console.log(record)
+  const id = task?.id;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addRecord(record);
+    addRecord(record, id);
     setRecordList();
     
     };
@@ -91,15 +92,15 @@ const AddRecord = () => {
                 value={record?.task5 || ""}
                 onChange={handleChange}
               /> 
-             <h6>TargetId</h6>
+             {/* <h6>TaskId</h6>
               <input
                 type="number"
                 className="form-control bg-info"
-                placeholder="targetid"
-                name="TargetId"
-                value={record?.TargetId || ""}
+                placeholder="taskid"
+                name="TaskId"
+                value={record?.TaskId || ""}
                 onChange={handleChange}
-              />
+              /> */}
             </div>
 
             <button

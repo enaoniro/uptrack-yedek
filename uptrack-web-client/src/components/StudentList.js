@@ -1,12 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { StudentContext } from "../contexts/StudentContext";
 import { GroupContext } from "../contexts/GroupContext";
 import Student from "./Student";
 import Table from "react-bootstrap/Table";
+import Container from "react-bootstrap/Container";
 import { useNavigate, useParams } from "react-router-dom";
 
-const StudentList = ({ group }) => {
+const StudentList = ({showDetails, setShowDetails, group }) => {
   console.log(group);
+ 
 
   console.log("student list is rendered");
 
@@ -19,9 +21,8 @@ const StudentList = ({ group }) => {
   const { groupList } = useContext(GroupContext);
   console.log(studentList);
 
-  const groupStudents = studentList.filter(
-    (student) => student.GroupId === group.id
-  );
+  const groupStudents = studentList?.filter(
+  (student) => student?.GroupId === group?.id );
   console.log(groupStudents);
   if (!groupStudents) {
     alert("no groupStudents exists!");
@@ -30,10 +31,11 @@ const StudentList = ({ group }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-100 p-3">
-      <Table className="w-100 p-3" responsive="md" bordered hover>
+    <div className="container-fluid bg-white shadow-lg ">
+      {/* <Container fluid className="mt-10 p-3 bg-white shadow-lg"> */}
+      <Table className="m-3 bg-white table-responsive-xl" bordered hover>
         <thead>
-          <tr className=" opacity-75 border-3">
+          <tr className=" opacity-75 border-3 " style={{ hover: "red" }}>
             <th className="text-black">number</th>
             <th className="text-black">Student name</th>
             <th className="text-black" rowSpan={2}>
@@ -54,7 +56,7 @@ const StudentList = ({ group }) => {
             {/* <th className="text-black" rowSpan={2}></th> */}
           </tr>
         </thead>
-        <tbody className="w-100">
+        <tbody className="">
           {groupStudents?.map((student, index) => (
             <tr
               style={{ cursor: "pointer" }}
@@ -74,10 +76,11 @@ const StudentList = ({ group }) => {
         </tbody>
         <tfoot>
           <tr>
-            <td>number of students: {group.Students.length}</td>
+            <td>number of students: {groupStudents.length}</td>
           </tr>
         </tfoot>
       </Table>
+      {/* </Container> */}
     </div>
   );
 };

@@ -20,9 +20,10 @@ let { id } = useParams();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTask(task);
+    addTask(task, id);
     setTaskList();
-    getTaskList();
+    // getTaskList();
+    setTask("")
   };
 
   return (
@@ -87,7 +88,7 @@ let { id } = useParams();
                 value={task?.task5 || ""}
                 onChange={handleChange}
               />
-               <h6>studentid</h6>
+               {/* <h6>studentid</h6>
               <input
                 type="number"
                 className="form-control bg-info"
@@ -95,7 +96,7 @@ let { id } = useParams();
                 name="StudentId"
                 value={task?.StudentId || ""}
                 onChange={handleChange}
-              />
+              /> */}
             </div>
 
             <button

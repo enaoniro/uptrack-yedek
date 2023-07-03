@@ -4,12 +4,17 @@ import { GroupContext } from "../contexts/GroupContext.js";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 
-const AddStudent = () => {
+const AddStudent = ({showDetails, setShowDetails ,group}) => {
+  console.log(group)
+
+   const id = group.id;
+
   const [student, setStudent] = useState({});
-  const [showDetails, setShowDetails] = useState(false);
+  const [studentList, setStudentList] = useState([]);
+  // const [showDetails, setShowDetails] = useState(false);
   // const [studentList, setStudentList] = useState([]);
 
-  const { addStudent, getStudentList, isOpen, setIsOpen, setStudentList, studentList } = useContext(
+  const { addStudent, getStudentList, isOpen, setIsOpen } = useContext(
     StudentContext
   );
 
@@ -25,14 +30,18 @@ const AddStudent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addStudent(student);
+    addStudent(student, id);
+  
     setStudentList((currentList) => {
-      return [...currentList, student];
+      return [...studentList, student];
     });
-    getStudentList();
+
+    setShowDetails(!showDetails)
+    // getStudentList();
+    // setStudentList(newStudentList);
     setStudent("")
    
-    // navigate("/")
+    
   };
 
   const hideForm = () => {
@@ -42,7 +51,7 @@ const AddStudent = () => {
   return (
     // <div id="form-container">
     // <div className="modal-dialog">
-    //   <div className="modal-content">
+    //   < className="modal-content">
     //     <div className="modal-header">
     //       <h5 className="modal-title" id="exampleModalLabel">
     //         add student
@@ -54,6 +63,7 @@ const AddStudent = () => {
     //         aria-label="Close"
     //       ></button>
     //     </div>
+   
     <div className="w-50 p-5">
       <form className="mb-4" onSubmit={handleSubmit}>
         <div >
@@ -83,14 +93,22 @@ const AddStudent = () => {
             placeholder="email"
             onChange={handleOnChange}
           />
-          <input
+            <input
+            type="text"
+            className="form-control mb-2 bg-light"
+            name="img"
+            value={student.img || ""}
+            placeholder="img"
+            onChange={handleOnChange}
+          />
+          {/* <input
             type="number"
             className="form-control mb-2 bg-light"
             name="GroupId"
             value={student.GroupId || ""}
             placeholder="group no giriniz"
             onChange={handleOnChange}
-          />
+          /> */}
           {/* <button
                 type="button"
                 className="btn btn-secondary"
@@ -108,8 +126,8 @@ const AddStudent = () => {
           </button>
         </div>
       </form>
-    </div>
-    //   </div>
+    </div> 
+   
     // </div>
   );
 };

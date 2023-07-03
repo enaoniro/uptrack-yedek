@@ -36,11 +36,11 @@ const Canton = ({ canton }) => {
     <React.Fragment key={canton.id}>
       {!isOpen ? (
         <>
-          <tr className="w-100 p-3">
+          <tr className="w-100 p-3 bg-white" onClick={handleClick}>
             <td
               style={{ cursor: "pointer" }}
-              className="opacity-75 text-capitalize py-5 text-primary fw-bolder "
-              onClick={handleClick}
+              className="opacity-75 text-capitalize py-5 bg-white text-primary fw-bolder "
+            
             >
               <span>{canton.name}</span>
             </td>
@@ -75,7 +75,7 @@ const Canton = ({ canton }) => {
           </tr>
         </>
       ) : (
-        <Table bordered hover className="w-100">
+        <Table bordered hover className="w-100 bg-white">
           <thead>
             <tr>
               <th>group id</th>

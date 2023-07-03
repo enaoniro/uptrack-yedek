@@ -1,6 +1,6 @@
+// import dotenv from './dotenv/config';
 import React from "react";
 import ReactDOM from "react-dom/client";
-// import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Auth0Provider } from "@auth0/auth0-react";
@@ -18,13 +18,13 @@ import "bootstrap/dist/js/bootstrap.min.js";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-// const domain = process.env.REACT_APP_AUTH0_DOMAIN;
+const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 // const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
 
 root.render(
   <BrowserRouter>
     <Auth0Provider
-      domain="dev-nvkdil22.eu.auth0.com"
+      domain= "dev-nvkdil22.eu.auth0.com"
       clientId="tL3vLjSd8ZphVAxt4GgwgqOiZNYpTjsz"
       redirectUri={window.location.origin}
     >

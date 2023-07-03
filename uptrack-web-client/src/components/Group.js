@@ -30,13 +30,9 @@ const Group = ({ group }) => {
 
   return (
     <>
-      <tr
-        className="w-100 d-flex bg-white"
-        key={group.id}
-       
-      >
+      <tr className="w-100 d-flex bg-white"  onClick={handleClick} key={group.id}>
         <td
-           onClick={handleClick}
+         
           style={{ cursor: "pointer" }}
           className="w-100 text-capitalize text-center d-flex justify-content-center align-items-center"
           // colSpan={2}
@@ -53,8 +49,7 @@ const Group = ({ group }) => {
           {group.leader}
         </td>
 
-          
-        <td className="w-100 text-capitalize text-center d-flex justify-content-center align-items-center fw-bolder opacity-75" >
+        <td className="w-100 text-capitalize text-center d-flex justify-content-center align-items-center fw-bolder opacity-75">
           <button
             type="button"
             className="w-100 btn btn-primary"
@@ -72,17 +67,16 @@ const Group = ({ group }) => {
             Delete Group
           </button>
         </td>
-      <td
-        className="modal fade"
-        id={"updateGroupModal" + group.id}
-        tabIndex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <UpdateGroup group={group} />
-      </td>
+        <td
+          className="modal fade"
+          id={"updateGroupModal" + group.id}
+          tabIndex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <UpdateGroup group={group} />
+        </td>
       </tr>
-
     </>
   );
 };

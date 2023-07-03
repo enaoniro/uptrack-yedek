@@ -37,7 +37,7 @@ const UpdateTarget = ({ target }) => {
                 className="form-control bg-info"
                 placeholder="risale name"
                 name="task1"
-                value={updatedTarget?.task1}
+                value={updatedTarget?.task1 || "" }
                 onChange={handleChange}
               />
               <h6>pirlanta sayfa adedi</h6>
@@ -46,7 +46,7 @@ const UpdateTarget = ({ target }) => {
                 className="form-control bg-info"
                 placeholder="pirlanta adi"
                 name="task2"
-                value={updatedTarget?.task2}
+                value={updatedTarget?.task2 || ""}
                 onChange={handleChange}
               />
               <h6>namaz</h6>
@@ -55,7 +55,7 @@ const UpdateTarget = ({ target }) => {
                 className="form-control bg-info"
                 placeholder="namaz"
                 name="task3"
-                value={updatedTarget?.task3}
+                value={updatedTarget?.task3 || ""}
                 onChange={handleChange}
               />
               <h6>cevsen bab sayisi</h6>
@@ -64,7 +64,7 @@ const UpdateTarget = ({ target }) => {
                 className="form-control bg-info"
                 placeholder="cevsen"
                 name="task4"
-                value={updatedTarget?.task4}
+                value={updatedTarget?.task4 || ""}
                 onChange={handleChange}
               />
               <h6>devam</h6>
@@ -73,7 +73,7 @@ const UpdateTarget = ({ target }) => {
                 className="form-control bg-info"
                 placeholder="devam"
                 name="task5"
-                value={updatedTarget?.task5}
+                value={updatedTarget?.task5 || ""}
                 onChange={handleChange}
               />
             </div>

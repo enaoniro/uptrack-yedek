@@ -20,20 +20,23 @@ const GroupContextProvider = (props) => {
     setGroupList(groupList);
   };
 
-  const addGroup = async (pGroup) => {
+  const addGroup = async (pGroup, id) => {
+    const newGroup = {
+      name:pGroup.name,
+      leader:pGroup.leader,
+      CantonId : id
+    }
     try {
         const res = await fetch("http://localhost:3001/api/v1/groups", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(pGroup),
+        body: JSON.stringify(newGroup),
       });
 
-      const data = await res.json();
+      // const data = await res.json();
 
-      setGroupList((currentArray) => {
-        return [...currentArray, data];
-      });
-      // getGroupList();
+      setGroupList([...groupList, newGroup]);
+      getGroupList();
     } catch (error) {
       console.log(error);
     }

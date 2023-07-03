@@ -1,17 +1,19 @@
 import { createContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 export const TaskContext = createContext();
 
 const TaskContextProvider = (props) => {
   const [taskList, setTaskList] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  // const [newtask, setNewTask] = useState({})
-  const [selectedTask, setSelectedTask] = useState({});
+  const [studentTasks, setStudentTasks] = useState([]);
+  const [task, setTask] = useState({});
+
+  let { id } = useParams();
 
   useEffect(() => {
     getTaskList();
-    // getStudentTaskById();
-    // getTaskById();
+    getTaskByStudentId();
   }, []);
 
   const getTaskList = async () => {
@@ -20,57 +22,30 @@ const TaskContextProvider = (props) => {
     setTaskList(taskList);
   };
 
-  //   const getTaskById = async (pTask) => {
-  //     const response = await fetch('http://localhost:3001/api/v1/tasks', {
-  //       method: 'post',
-  //       body: JSON.stringify(pTask),
-  //       headers: { "Content-Type": "application/json" }
-  //   })
+  const getTaskByStudentId = async (id) => {
+    const response = await fetch(`http://localhost:3001/api/v1/tasks/${id}`);
+    const suttasks = await response.json();
+    setStudentTasks(suttasks);
+  };
 
-  //   return await response.json();
-  // }
-
-  //   const getStudentTaskById = async (pTask) => {
-
-  //       const response = await fetch('http://localhost:3001/api/v1/tasks/suttask', {
-  //         method: 'POST',
-  //         body: JSON.stringify(pTask),
-  //         headers: { 'Content-Type': 'application/json'},
-  //       });
-
-  //       return await response.json();
-  // };
-  //     setTaskList(
-  //       taskList.map((task) =>
-  //         task.Studentd === pId
-  //       )
-  //     );
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  const addTask = async (pTask) => {
-    // if (pUser.email !==undefined) {
-    // const newTask = {
-    //   // id: pTask.id,
-    //   task1: pTask.task1,
-    //   task2: pTask.task2,
-    //   task3: pTask.task3,
-    //   task4: pTask.task4,
-    //   task5: pTask.task5,
-    //   StudentId: pTask.StudentId,
-    // };
+  const addTask = async (pTask, id) => {
+    const newTask = {
+      task1: pTask.task1,
+      task2: pTask.task2,
+      task3: pTask.task3,
+      task4: pTask.task4,
+      task5: pTask.task5,
+      isCompleted: false,
+      StudentId: id,
+    };
     try {
-      const res = await fetch("http://localhost:3001/api/v1/tasks", {
+      await fetch("http://localhost:3001/api/v1/tasks", {
         method: "POST",
-        body: JSON.stringify(pTask),
+        body: JSON.stringify(newTask),
         headers: { "Content-Type": "application/json" },
       });
 
-      // const data = await res.json();
-
-      setTaskList([...taskList, res]);
+      setTaskList((previousTaskList) => [...taskList, newTask]);
       getTaskList();
     } catch (error) {
       console.log(error);
@@ -94,12 +69,30 @@ const TaskContextProvider = (props) => {
     }
   };
 
-  // const selectTask = (id) => {
-  //   setSelectedTask(taskList.find(Task=>Task.id==id));
-  //   return selectedTask;
-  // }
+  const setTaskCompleted = async (pTask) => {
+    console.log(pTask?.id);
+    const newTask = { ...pTask, isCompleted: !pTask.isCompleted };
 
-  console.log(taskList);
+    try {
+      const res = await fetch("http://localhost:3001/api/v1/tasks/settask/" + pTask.id, {
+        method: "PUT",
+        body: JSON.stringify(newTask),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      // const data = await res.json();
+
+
+      setTaskList(
+         taskList.map((task) => (task.id === newTask.id ? newTask : task))
+      );
+      getTaskList();
+
+      console.log(newTask);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <TaskContext.Provider
@@ -111,6 +104,7 @@ const TaskContextProvider = (props) => {
         setTaskList,
         isOpen,
         setIsOpen,
+        setTaskCompleted,
       }}
     >
       {props.children}

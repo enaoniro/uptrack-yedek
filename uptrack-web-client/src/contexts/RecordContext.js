@@ -31,27 +31,27 @@ const RecordContextProvider = (props) => {
   //   };
   //  console.log(userInDatabase)
 
-  const addRecord = async (pRecord) => {
+  const addRecord = async (pRecord, id) => {
     // if (pUser.email !==undefined) {
-    // const newRecord = {
-    //   id: pRecord.id,
-    //   task1: pRecord.task1,
-    //   task2: pRecord.task2,
-    //   task3: pRecord.task3,
-    //   task4: pRecord.task4,
-    //   task5: pRecord.task5,
-    //   TargetId: pRecord.TargetId,
-    // };
+    const newRecord = {
+     
+      task1: pRecord.task1,
+      task2: pRecord.task2,
+      task3: pRecord.task3,
+      task4: pRecord.task4,
+      task5: pRecord.task5,
+      TaskId: id,
+    };
     try {
-      const res = await fetch("http://localhost:3001/api/v1/records", {
+        await fetch("http://localhost:3001/api/v1/records", {
         method: "POST",
-        body: JSON.stringify(pRecord),
+        body: JSON.stringify(newRecord),
         headers: { "Content-Type": "application/json" },
       });
 
-      const data = await res.json();
+      // const data = await res.json();
 
-      setRecordList([...recordList, data]);
+      setRecordList(previousState => [...recordList, newRecord]);
       getRecordList();
     } catch (error) {
       console.log(error);

@@ -1,6 +1,7 @@
 import React, { useContext, useRef } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Table from 'react-bootstrap/Table';
+import Container from "react-bootstrap/Container";
 import AddGroup from "./AddGroup.js";
 // import UpdateGroup from "./UpdateGroup.js";
 import GroupList from "./GroupList.js";
@@ -32,9 +33,9 @@ import ListGroupItem from "react-bootstrap/esm/ListGroupItem.js";
         returnTo: window.location.origin,
       });
 
-      const canton = cantonList.find((canton)=>canton.email==user.email)
+      const canton = cantonList?.find((canton)=>canton?.email==user.email)
       console.log(canton)
-      // const group = groupList.map((group) =>group.CantonId === canton.id);
+      // const group = groupList?.map((group) =>group?.CantonId === canton.id);
       // console.log(group)
     
       const handleClick =()=>{
@@ -42,8 +43,8 @@ import ListGroupItem from "react-bootstrap/esm/ListGroupItem.js";
       }
 
 return (
-  <div id="main" key={canton.id}>
-    
+  <div id="main">
+    <Container fluid className="mt-10 p-3 bg-white">
       <div className="container-fluid m-0 p-0">
         <header
           className=" m-3 navbar navbar-expand-lg" 
@@ -74,7 +75,7 @@ return (
             <div className="d-flex">
               <ul className="navbar-nav me-1 mb-1 mb-lg-0">
                 <li>
-                  <h6 className="d-inline-block p-1">{user.name}</h6>
+                  <h6 className="d-inline-block p-1">{user?.name}</h6>
                   <button
                     className="btn btn-outline-danger"
                     onClick={() => logoutWithRedirect()}
@@ -138,7 +139,7 @@ return (
           // aria-labelledby="exampleModalLabel"
           // aria-hidden="true"
         >
-         {isOpen ? <AddGroup /> : null }
+         {isOpen ? <AddGroup canton={canton} /> : null }
          <GroupList canton={canton}/>  
         </div>
             {/* <div
@@ -160,6 +161,7 @@ return (
     </div>
     </div>
     </div>
+    </Container>
 </div>
 )
 }

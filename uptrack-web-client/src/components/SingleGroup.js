@@ -7,6 +7,7 @@ import UpdateGroup from "./UpdateGroup";
 import Student from "./Student";
 import SingleStudent from "./SingleStudent";
 import Table from "react-bootstrap/esm/Table";
+import Container from "react-bootstrap/Container";
 import StudentList from "./StudentList";
 
 const SingleGroup = () => {
@@ -34,8 +35,8 @@ const SingleGroup = () => {
   return (
     // <React.Fragment key={group.id}>
     <>
-      <div className="container-fluid p-3">
-        <Table className="w-100 bg-white p-3" bordered hover>
+      <div className="container-fluid mt-10 bg-white">
+        <Table className="w-85 p-3" >
           {/* <thead className="p-3">
           <tr>
             <th className="w-50 h-100 opacity-75">Group name</th>
@@ -43,8 +44,7 @@ const SingleGroup = () => {
         </thead> */}
           <tbody>
             <tr
-              className="w-100 d-flex justify-content-between shadow-sm bg-white text-primary"
-              key={group.id}
+              className="w-100 d-flex text-primary bg-body"
             >
               {/* <td className="text-capitalize text-primary bg-body fw-bolder text-center p-5" key={group.id}> </td> */}
               <td
@@ -53,7 +53,7 @@ const SingleGroup = () => {
                 onClick={handleClick}
               >
                 {/* <a className="text-decoration-none" href="http://localhost:3000/group" >{group.name}</a>  */}
-                {group.id}-{group.name}
+                {group.id}-{group.leader} group
               </td>
               {/* <td colSpan={2} className="text-capitalize text-primary bg-body fw-bolder text-center">{group.leader}</td> */}
               {/* <td className="text-capitalize text-primary bg-body fw-bolder text-center p-5">{group.Canton.name}</td> */}
@@ -89,14 +89,13 @@ const SingleGroup = () => {
 
           </tbody>
         </Table>
-      </div>
-
-      <div>
+   
         <StudentList group={group} />
       </div>
+   
     </>
 
-    // </React.Fragment>
+    
   );
 };
 

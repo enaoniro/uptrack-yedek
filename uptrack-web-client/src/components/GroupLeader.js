@@ -13,9 +13,10 @@ import StudentList from "./StudentList.js";
 
 function GroupLeader() {
   const [showDetails, setShowDetails] = useState(false);
+  const [ groupStudents, setGroupStudents] = useState([])
   const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
-  console.log("group leader is rendered")
+  console.log("group leader is rendered");
 
   console.log(user);
 
@@ -33,10 +34,8 @@ function GroupLeader() {
 
   console.log(groupList);
 
-  const group = groupList.find((group) => group.leader == user.email);
+  const group = groupList?.find((group) => group.leader === user.email);
   console.log(group);
-
-  
 
   const logoutWithRedirect = () =>
     logout({
@@ -47,10 +46,7 @@ function GroupLeader() {
   //  console.log(students)
 
   const handleClick = () => {
-    //   const id = group.id
-    //   const students = getStudentsInGroup(id)
-    // return setStudentsInGroup(students)
-
+    // setGroupStudents(group.Students)
     setShowDetails(!showDetails);
   };
 
@@ -59,95 +55,104 @@ function GroupLeader() {
 
   return (
     <div id="main">
-      
-        <div className="container-fluid m-0 p-0">
-          <header className="w-100 navbar navbar-expand-lg shadow-sm bg-white mb-3 p-3" id="header">
-            <a
-              href="/"
-              className="d-flex align-items-center text-primary text-decoration-none"
-            >
-              <span className="fs-5">uptrack</span>
-            </a>
-            <div className="navbar-collapse offcanvas-collapse">
-              <ul className="d-flex align-items-center navbar-nav me-auto mb-5 mb-lg-0">
-                <li className="nav-item">
-                  <span className="fs-5 p-1 text-primary"> | </span>
-                </li>
+      <div className="container-fluid m-0 p-0">
+        <header
+          className="w-100 navbar navbar-expand-lg shadow-sm bg-white mb-3 p-3"
+          id="header"
+        >
+          <a
+            href="/"
+            className="d-flex align-items-center text-primary text-decoration-none"
+          >
+            <span className="fs-5">uptrack</span>
+          </a>
+          <div className="navbar-collapse offcanvas-collapse">
+            <ul className="d-flex align-items-center navbar-nav me-auto mb-5 mb-lg-0">
+              <li className="nav-item">
+                <span className="fs-5 p-1 text-primary"> | </span>
+              </li>
 
-                {/* <li className="nav-item">
+              {/* <li className="nav-item">
                   <a className="nav-link" href="#"></a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="#"></a>
                 </li> */}
 
-                
-                  {/* <li className="nav-item">
+              {/* <li className="nav-item">
                       <a className="nav-link active" aria-current="page" href="#">Dashboard</a>
                     </li> */}
-                  <li className="nav-item">
-                    <a
-                      className="nav-link text-primary"
-                      href="http://localhost:3000/group"
-                    >
-                      Group Page
-                    </a>
-                  </li>
-                  {/* <li className="nav-item">
+              <li className="nav-item">
+                <a
+                  className="nav-link text-primary"
+                  href="http://localhost:3000/group"
+                >
+                  Group Page
+                </a>
+              </li>
+              {/* <li className="nav-item">
                       <a className="nav-link" href="#">tasks</a>
                     </li> */}
-                
-              </ul>
-              <div className="d-flex">
-                <ul className="navbar-nav me-auto m-1 mb-lg-0">
-                  <li>
-                    <span className="user-info">
-                      {/* <img
+            </ul>
+            <div className="d-flex">
+              <ul className="navbar-nav me-auto m-1 mb-lg-0">
+                <li>
+                  <span className="user-info">
+                    {/* <img
                       src={user.picture}
                       alt="Profile"
                       className="nav-user-profile d-inline-block rounded-circle mr-3"
                       width="40"
                     /> */}
-                      <h6 className="d-inline-block p-1 me-1">{user.name} </h6>
-                    </span>
-                    <button
-                      className="btn btn-outline-danger"
-                      onClick={() => logoutWithRedirect()}
-                    >
-                      Logout
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </header>
-
-          <div className="container-fluid bg-white" id="innerdiv">
-            <div className="row">
-              <div className="col-md-1 text-primary m-1 mt-3" id="listebox">
+                    <h6 className="d-inline-block p-1 me-1">{user.name} </h6>
+                  </span>
                   <button
-                  onClick={handleClick}
-                    // type="button"
-                    className="btn btn-outline-success fs-6 w-100"
-                    // data-bs-toggle="modal"
-                    // data-bs-target={"#addStudentModal"}
+                    className="btn btn-outline-danger"
+                    onClick={() => logoutWithRedirect()}
                   >
-                    add student
+                    Logout
                   </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </header>
+
+        <div className="container-fluid bg-white" id="innerdiv">
+          <div className="row">
+            <div className="col-md-1 text-primary m-1 mt-3" id="listebox">
+              <button
+                onClick={handleClick}
+                // type="button"
+                className="btn btn-outline-success fs-6 w-100 mb-2"
+                // data-bs-toggle="modal"
+                // data-bs-target={"#addStudentModal"}
+              >
+                add student
+              </button>
+              <button
+                onClick={handleClick}
+                // type="button"
+                className="btn btn-outline-success fs-6 w-100"
+                // data-bs-toggle="modal"
+                // data-bs-target={"#addStudentModal"}
+              >
+                group students
+              </button>
+            </div>
+            <div className="col-md-10 p-1 my-3" id="details-div">
+              <div
+                id="schweiz"
+                className="d-flex shadow-sm align-items-center justify-content-center mb-1"
+              >
+                <p className="fw-bolder fs-5">Group Name :</p>
+                <p className="text-secondary fs-5 fw-bolder">{group?.leader}</p>
               </div>
-              <div className="col-md-10 p-1 my-3" id="details-div">
-                <div
-                  id="schweiz"
-                  className="d-flex shadow-sm align-items-center justify-content-center mb-1"
-                >
-                  <p className="fw-bolder fs-5">Group Name :</p>
-                  <p className="text-secondary fs-5 fw-bolder">{group.leader}</p>
-                </div>
-                <div className="h-100" id="form-div">
-                  {showDetails ? <AddStudent /> : null }
-                  <StudentList group={group} />
-                </div>
-                {/* <div
+              <div className="w-90 h-100 m-5" id="form-div">
+                {showDetails ? <AddStudent showDetails={showDetails} setShowDetails={setShowDetails} group={group} /> : 
+                <StudentList  group={group} />}
+              </div>
+              {/* <div
                   className="modal fade"
                   id={"addStudentModal"}
                   tabIndex="-1"
@@ -156,11 +161,10 @@ function GroupLeader() {
                 >
                   <AddStudent />
                 </div> */}
-              </div>
             </div>
           </div>
         </div>
-      
+      </div>
     </div>
   );
 }

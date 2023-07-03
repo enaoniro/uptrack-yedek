@@ -3,6 +3,7 @@ import { CantonContext } from "../contexts/CantonContext";
 import { GroupContext } from "../contexts/GroupContext";
 import UpdateCanton from "./UpdateCanton";
 import Table from "react-bootstrap/Table";
+import Container from "react-bootstrap/Container";
 import Group from "./Group.js";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -35,8 +36,10 @@ function SingleCanton() {
   return (
     <React.Fragment key={canton.id}>
       {!isOpen ? (
-        <div className="container-fluid p-3">
-          <Table className="w-100 p-3" bordered hover>
+       <div id="main" key={canton.id}>
+    <Container fluid className="w-75 mt-5 p-3 bg-white shadow-lg">
+      <div className="container-fluid m-0 p-0">
+          <Table className="w-100 p-3 bg-white" bordered hover>
             <thead className="p-3">
               <tr>
                 <th className="w-50 h-100 opacity-75">Canton name</th>
@@ -44,11 +47,11 @@ function SingleCanton() {
               </tr>
             </thead>
             <tbody>
-            <tr className="w-100">
+            <tr className="w-100" onClick={handleClick}>
               <td
                 style={{cursor:"pointer"}}
                 className="opacity-75 text-capitalize py-5 text-primary fw-bolder "
-                onClick={handleClick}
+               
               >
                 <span>{canton.name}</span>
               </td>
@@ -84,10 +87,12 @@ function SingleCanton() {
             </tbody>
           </Table>
           </div>
+          </Container>
+</div>
         
       ) : (
-        <div className="container-fluid p-3">
-        <Table bordered hover className="w-100 p-3">
+        <div className="w-75 container-fluid p-3 bg-white">
+        <Table bordered hover className="w-100 p-3 bg-white shadow-lg">
           <thead>
             <tr>
               <th>{canton.name} groups</th>

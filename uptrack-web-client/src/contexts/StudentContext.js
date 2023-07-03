@@ -46,22 +46,28 @@ const StudentContextProvider = (props) => {
     setStudent(student);
   };
 
-  const addStudent = async (pStudent) => {
+  const addStudent = async (pStudent, id) => {
+    const newStudent = {
+      first_name: pStudent.first_name,
+      last_name:pStudent.last_name,
+      email: pStudent.email,
+      GroupId: id,
+      img: pStudent.img,
+    }
     try {
-        const res = await fetch("http://localhost:3001/api/v1/students", {
+        await fetch("http://localhost:3001/api/v1/students", {
         method: "POST",
+        body: JSON.stringify(newStudent),
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(pStudent),
       });
 
-      const data = await res.json();
+      // const data = await res.json();
 
       // setStudentList([...studentList, data]);
-      setStudentList(currentArray => {
-        return [...currentArray, data]
-     });
-     getStudentList();
-     navigate("/")
+      setStudentList( [...studentList, newStudent]);
+      console.log(studentList)
+    //  getStudentList();
+    // navigate("/")
       console.log("student context add student is rendered")
     } catch (error) {
       console.log(error);

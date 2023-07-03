@@ -43,7 +43,7 @@ const UpdateTask = ({ task }) => {
                 className="form-control bg-info"
                 placeholder="task-1"
                 name="task1"
-                value={updatedTask?.task1}
+                value={updatedTask?.task1 || ""}
                 onChange={handleChange}
               />
               <h6>task-2</h6>
@@ -52,7 +52,7 @@ const UpdateTask = ({ task }) => {
                 className="form-control bg-info"
                 placeholder="task-2"
                 name="task2"
-                value={updatedTask?.task2}
+                value={updatedTask?.task2 || ""}
                 onChange={handleChange}
               />
               <h6>task-3</h6>
@@ -61,7 +61,7 @@ const UpdateTask = ({ task }) => {
                 className="form-control bg-info"
                 placeholder="task-3"
                 name="task3"
-                value={updatedTask?.task3}
+                value={updatedTask?.task3 || ""}
                 onChange={handleChange}
               />
               <h6>task-4</h6>
@@ -70,7 +70,7 @@ const UpdateTask = ({ task }) => {
                 className="form-control bg-info"
                 placeholder="task-4"
                 name="task4"
-                value={updatedTask?.task4}
+                value={updatedTask?.task4 || ""}
                 onChange={handleChange}
               />
               <h6>task-5</h6>
@@ -79,7 +79,7 @@ const UpdateTask = ({ task }) => {
                 className="form-control bg-info"
                 placeholder="task-5"
                 name="task5"
-                value={updatedTask?.task5}
+                value={updatedTask?.task5 || "" }
                 onChange={handleChange}
               />
             

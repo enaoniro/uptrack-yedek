@@ -1,13 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { GroupContext } from "../contexts/GroupContext.js";
 
-const AddGroup = () => {
+const AddGroup = ({canton}) => {
   const [group, setGroup] = useState({});
   // const [groupList, setGroupList] = useState([]);
 
   const { addGroup, getGroupList, updateGroup, isOpen, setIsOpen, setGroupList } = useContext(
     GroupContext
   );
+
+  const id = canton.id;
 
   useEffect(() => {
     getGroupList();
@@ -19,10 +21,10 @@ const AddGroup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addGroup(group);
+    const newGroupList = addGroup(group, id);
     // setGroupList(currentArray => {
     //   return [...currentArray, group]});
-    // getGroupList();
+    setGroupList(newGroupList);
   };
 
   const hideForm = () => {
@@ -54,25 +56,25 @@ const AddGroup = () => {
                 className="form-control bg-info"
                 placeholder="grup adi"
                 name="name"
-                value={group.name || ""}
+                value={group?.name || ""}
                 onChange={handleChange}
               />
+
+              {/* <input
+                type="text"
+                className="form-control bg-info"
+                placeholder="name"
+                name="name"
+                value={group?.name || ""}
+                onChange={handleChange}
+              /> */}
 
               <input
                 type="text"
                 className="form-control bg-info"
                 placeholder="leader"
                 name="leader"
-                value={group.leader || ""}
-                onChange={handleChange}
-              />
-
-              <input
-                type="number"
-                className="form-control bg-info"
-                placeholder="canton id"
-                name="CantonId"
-                value={group.CantonId || ""}
+                value={group?.leader || ""}
                 onChange={handleChange}
               />
               <button

@@ -29,25 +29,24 @@ const TargetContextProvider = (props) => {
   //   };
   //  console.log(userInDatabase)
 
-  const addTarget = async (pTarget) => {
+  const addTarget = async (pTarget, id) => {
     // if (pUser.email !==undefined) {
-    // const newTarget = {
-    //   // id: pTarget.id,
-    //   task1: pTarget.task1,
-    //   task2: pTarget.task2,
-    //   task3: pTarget.task3,
-    //   task4: pTarget.task4,
-    //   task5: pTarget.task5,
-    //   TaskId: pTarget.TaskId,
-    // };
+    const newTarget = {
+      task1: pTarget.task1,
+      task2: pTarget.task2,
+      task3: pTarget.task3,
+      task4: pTarget.task4,
+      task5: pTarget.task5,
+      TaskId: id,
+    };
     try {
       await fetch("http://localhost:3001/api/v1/targets", {
         method: "POST",
-        body: JSON.stringify(pTarget),
+        body: JSON.stringify(newTarget),
         headers: { "Content-Type": "application/json" },
       });
 
-      setTargetList([...targetList, pTarget]);
+      setTargetList(previousState => [...targetList, newTarget]);
       getTargetList();
     } catch (error) {
       console.log(error);

@@ -2,11 +2,15 @@ import React, { useContext, useState, useEffect } from "react";
 import { TargetContext } from "../contexts/TargetContext";
 import { StudentContext } from "../contexts/StudentContext";
 
-const AddTarget = () => {
+const AddTarget = ({task}) => {
   const [target, setTarget] = useState({});
+  const [targetList, setTargetList ] = useState([])
+
+
   const { addTarget, getTargetList } = useContext(TargetContext);
   const { setStudentList } = useContext(StudentContext);
-  const [targetList, setTargetList ] = useState([])
+
+  const id = task?.id;
 
 
   useEffect(() => {
@@ -19,11 +23,13 @@ const AddTarget = () => {
 
   console.log(target)
 
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newtargetlist = addTarget(target);
-    setTargetList(newtargetlist);
-    getTargetList();
+    addTarget(target, id);
+    setTargetList();
+    // getTargetList();
   };
 
   return (
@@ -88,7 +94,7 @@ const AddTarget = () => {
                 value={target?.task5 || ""}
                 onChange={handleChange}
               /> 
-             <h6>TaskId</h6>
+             {/* <h6>TaskId</h6>
               <input
                 type="number"
                 className="form-control bg-info"
@@ -96,7 +102,7 @@ const AddTarget = () => {
                 name="TaskId"
                 value={target?.TaskId || ""}
                 onChange={handleChange}
-              />
+              /> */}
             </div>
 
             <button
