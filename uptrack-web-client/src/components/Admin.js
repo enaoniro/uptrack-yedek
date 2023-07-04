@@ -50,7 +50,7 @@ function Admin() {
                 <span className="fs-5 text-primary">uptrack  </span>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/">home</a>
+                <a className="nav-link" href="/">Home</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#"></a>

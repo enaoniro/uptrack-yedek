@@ -1,13 +1,13 @@
 import React from "react";
-import { FaHome } from "react-icons/fa"
+import { FaHome } from "react-icons/fa";
 import { useEffect, useState, useContext } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 // import  * as userService  from "../service/front.user.service";
 import { UserContext } from "../contexts/UserContext";
 import Admin from "./Admin";
-import CantonManager from "../components/cantonmanager";
+import CantonManager from "./CantonManager";
 import GroupLeader from "../components/GroupLeader";
-import Layout from "../components/layout";
+import Layout from "./Layout";
 
 function Navbar() {
   const [role, setRole] = useState("");
@@ -55,24 +55,18 @@ function Navbar() {
   // console.log(user);
 
   return (
-    
-      
-      
-        
-          <div className="m-0 p-0 container-fluid bg-primary opacity-75">
-            <header className="px-1 border-bottom navbar navbar-expand-lg shadow-lg">
-              <a
-                href="/"
-                className="d-flex align-items-center text-white text-decoration-none"
-              >
-                {/* <span className="fs-4">uptrack</span>
+    <div className="m-0 p-0 container-fluid bg-primary opacity-75">
+      <header className="px-1 border-bottom navbar navbar-expand-lg shadow-lg">
+        <a
+          href="/"
+          className="d-flex align-items-center text-white text-decoration-none"
+        >
+          {/* <span className="fs-4">uptrack</span>
                 <hr></hr> */}
-                <span>uptrack</span>
-              </a>
-            </header>
-          </div>
-
-    
+          <span>uptrack</span>
+        </a>
+      </header>
+    </div>
   );
 }
 export default Navbar;
