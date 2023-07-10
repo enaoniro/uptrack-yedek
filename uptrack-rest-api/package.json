@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/enaoniro/uptrack-rest-api/issues"
   },
-  "homepage": "https://github.com/enaoniro/uptrack-rest-api#readme",
+  "Homepage": "https://github.com/enaoniro/uptrack-rest-api#readme",
   "dependencies": {
     "axios": "^1.1.3",
     "body-parser": "^1.20.0",
