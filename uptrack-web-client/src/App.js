@@ -37,7 +37,7 @@ function App() {
         <Route path="canton/:id" element={<SingleCanton />} />
         <Route path="group" element={<GroupLeader />} />
         <Route path="group/:id" element={<SingleGroup />} />
-        <Route path="students/student/:id" element={<SingleStudent />} />
+        <Route path="students/:id" element={<SingleStudent />} />
         <Route path="student" element={<Student />} />
         <Route path="records/add" element={<AddRecord />} />
       </Route>

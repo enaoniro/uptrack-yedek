@@ -22,7 +22,8 @@ function GroupLeader() {
 
   const {
     studentList,
-    student,
+    setStudent,
+    // student,
     isOpen,
     setIsOpen,
     setStudentsInGroup,
@@ -36,6 +37,9 @@ function GroupLeader() {
 
   const group = groupList?.find((group) => group.leader === user.email);
   console.log(group);
+  const students = studentList.filter((student) => student.GroupId === group.id);
+ console.log(students);
+
 
   const logoutWithRedirect = () =>
     logout({

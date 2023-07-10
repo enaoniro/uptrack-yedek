@@ -21,19 +21,24 @@ const SingleStudent = () => {
   const [showCompletedTasks, setShowCompletedTasks] = useState(false);
   const [tasksCompleted, setTasksCompleted] = useState([]);
   console.log(tasksCompleted);
-  // const [ record, setRecord ] = useState({})
-  // console.log("single student rendered");
-  
+
+  let { id } = useParams();
+  console.log(id);
+
+  useEffect(() => {
+    getStudentById();
+  }, [id]);
+
   const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
   const logoutWithRedirect = () =>
-  logout({
-    returnTo: window.location.origin,
-  });
-  
-  let { id } = useParams();
+    logout({
+      returnTo: window.location.origin,
+    });
+
   const navigate = useNavigate();
 
   const {
+    getStudentList,
     studentList,
     getStudentById,
     setStudent,
@@ -42,6 +47,8 @@ const SingleStudent = () => {
     isOpen,
     setIsOpen,
   } = useContext(StudentContext);
+
+  console.log(studentList);
 
   const { groupList } = useContext(GroupContext);
 
@@ -66,13 +73,11 @@ const SingleStudent = () => {
   const record = recordList.find((record) => record?.TaskId === task?.id);
   console.log(record ?? "no records");
 
-
   const setTaskEnd = (task) => {
     console.log(task?.isCompleted);
     task.isCompleted = !task.isCompleted;
     setTaskCompleted(task);
     setTaskList();
-    
   };
 
   const handleClick = () => {
@@ -83,6 +88,10 @@ const SingleStudent = () => {
     setShowCompletedTasks(!showCompletedTasks);
   };
   // console.log(student.Tasks.filter((task) => task.isCompleted === true));
+
+  if (!student) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
@@ -136,7 +145,7 @@ const SingleStudent = () => {
                       className="nav-user-profile d-inline-block rounded-circle mr-3"
                       width="40"
                     /> */}
-                      <h6 className="d-inline-block p-1 me-1">{user.name} </h6>
+                      {/* <h6 className="d-inline-block p-1 me-1">{user.name} </h6> */}
                     </span>
                     <button
                       className="btn btn-outline-danger"
@@ -149,13 +158,13 @@ const SingleStudent = () => {
               </div>
             </div>
           </header>
-          <div className="container-fluid bg-white" id="innerdiv">
-            <div className="row ">
-              <div className="col-lg-1 text-primary p-3 mt-2" id="listebox">
-                <div className="d-flex flex-column m-0 text-align-center justify-content-center">
+          <div className="bg-white" id="innerdiv">
+            <div className="row">
+              <div className="col-sm-1 text-primary p-3 mt-2" id="listebox">
+                <div className="d-flex flex-column m-auto text-align-center justify-content-center">
                   {/* <div className="w-100 text-align-center"> */}
                   <button
-                    type="button"
+                    // type="button"
                     className="btn btn-outline-primary opacity-75 w-20"
                     data-bs-toggle="modal"
                     data-bs-target={"#updateStudentModal" + student.id}
@@ -164,7 +173,7 @@ const SingleStudent = () => {
                   </button>
                   <button
                     type="button"
-                    className="btn btn-outline-primary opacity-75 w-20 "
+                    className="btn btn-outline-primary opacity-75 w-20"
                     data-bs-toggle="modal"
                     data-bs-target={"#addTaskModal" + task?.id}
                   >
@@ -212,7 +221,7 @@ const SingleStudent = () => {
                   </button>
                   <button
                     // disabled
-                    onClick={() => deleteStudent(id)}
+                    onClick={() => deleteStudent(student.id)}
                     className="btn btn-outline-danger opacity-75 w-20"
                   >
                     Delete student
@@ -226,10 +235,11 @@ const SingleStudent = () => {
                 </div>
               </div>
               <div className="col-lg-10 bg-white mt-2" id="details-div">
-                {/* <Container fluid className="w-75 mt-5 bg-white"> */}
                 <Table
+                  
                   bordered
-                  className="bg-white shadow-lg mt-3 table-responsive"
+                  className="bg-white shadow-lg mt-3 "
+                  style={{ maxWidth: "100%" }}
                 >
                   <thead className="bg-white">
                     <tr>
@@ -505,7 +515,7 @@ const SingleStudent = () => {
                             mark task as completed
                           </button>
                         ) : (
-                          <p className="bg-danger text-white">
+                          <p className="bg-danger text-white p-2">
                             no current task to display
                           </p>
                         )}
@@ -543,10 +553,11 @@ const SingleStudent = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {tasksCompleted.sort(
-                          (firstItem, secondItem) =>
-                            secondItem.id - firstItem.id
-                        )
+                        {tasksCompleted
+                          .sort(
+                            (firstItem, secondItem) =>
+                              secondItem.id - firstItem.id
+                          )
                           .filter((task) => task.StudentId === student.id)
                           .map((task) => (
                             <tr
