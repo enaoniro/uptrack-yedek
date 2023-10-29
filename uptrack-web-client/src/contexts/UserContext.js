@@ -16,7 +16,7 @@ const UserContextProvider = (props) => {
   const checkAuthenticatedUser = async (pUser) => {
     console.log(pUser);
 
-    const response = await fetch("http://localhost:3001/api/v1/users/check", {
+    const response = await fetch("https://uptrackme.onrender.com/users/check", {
       method: "post",
       body: JSON.stringify(pUser),
       headers: { "Content-Type": "application/json" },
@@ -26,13 +26,13 @@ const UserContextProvider = (props) => {
   };
 
   const getUserList = async () => {
-    const response = await fetch("http://localhost:3001/api/v1/users");
+    const response = await fetch("https://uptrackme.onrender.com/users");
     const userList = await response.json();
     setUserList(userList);
   };
 
   const getUserByEmail = async (pUser) => {
-    const response = await fetch("http://localhost:3001/api/v1/users");
+    const response = await fetch("https://uptrackme.onrender.com/users");
     const userList = await response.json();
     const data = userList.filter((user) => user.email == pUser.email);
     setUserInDatabase(data);
@@ -49,7 +49,7 @@ const UserContextProvider = (props) => {
       RoleId: pUser.RoleId,
     };
     try {
-      await fetch("http://localhost:3001/api/v1/users", {
+      await fetch("https://uptrackme.onrender.com/users", {
         method: "POST",
         body: JSON.stringify(pUser),
         headers: { "Content-Type": "application/json" },
@@ -63,7 +63,7 @@ const UserContextProvider = (props) => {
 
   const updateUser = async (pUser) => {
     try {
-      await fetch("http://localhost:3001/api/v1/users/" + pUser.id, {
+      await fetch("https://uptrackme.onrender.com/users/" + pUser.id, {
         method: "PUT",
         body: JSON.stringify(pUser),
         headers: { "Content-Type": "application/json" },
@@ -79,7 +79,7 @@ const UserContextProvider = (props) => {
 
   const deleteUser = async (pUserId) => {
     try {
-      await fetch("http://localhost:3001/api/v1/users/" + pUserId, {
+      await fetch("https://uptrackme.onrender.com/users/" + pUserId, {
         method: "DELETE",
       });
       const updateDUserList = userList.filter((user) => user.id !== pUserId);

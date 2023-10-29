@@ -15,7 +15,7 @@ const RecordContextProvider = (props) => {
   }, []);
 
   const getRecordList = async () => {
-    const response = await fetch("http://localhost:3001/api/v1/records");
+    const response = await fetch("https://uptrackme.onrender.com/records");
     const recordList = await response.json();
     if(!recordList){
       return console.log("no records found!")
@@ -24,7 +24,7 @@ const RecordContextProvider = (props) => {
   }};
 
   //   const getUserByEmail = async (pUser) => {
-  //     const response = await fetch('http://localhost:3001/api/v1/users');
+  //     const response = await fetch('https://uptrackme.onrender.com/users');
   //     const userList= await response.json();
   //     const data = userList.filter(user=>user.email==pUser.email);
   //     setUserInDatabase(data);
@@ -43,7 +43,7 @@ const RecordContextProvider = (props) => {
       TaskId: id,
     };
     try {
-        await fetch("http://localhost:3001/api/v1/records", {
+        await fetch("https://uptrackme.onrender.com/records", {
         method: "POST",
         body: JSON.stringify(newRecord),
         headers: { "Content-Type": "application/json" },
@@ -60,7 +60,7 @@ const RecordContextProvider = (props) => {
 
   const updateRecord = async (pRecord) => {
     try {
-      await fetch("http://localhost:3001/api/v1/records/" + pRecord.id, {
+      await fetch("https://uptrackme.onrender.com/records/" + pRecord.id, {
         method: "PUT",
         body: JSON.stringify(pRecord),
         headers: { "Content-Type": "application/json" },

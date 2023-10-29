@@ -15,7 +15,7 @@ const GroupContextProvider = (props) => {
   }, []);
 
   const getGroupList = async () => {
-    const response = await fetch("http://localhost:3001/api/v1/groups");
+    const response = await fetch("https://uptrackme.onrender.com/groups");
     const groupList = await response.json();
     setGroupList(groupList);
   };
@@ -27,7 +27,7 @@ const GroupContextProvider = (props) => {
       CantonId : id
     }
     try {
-        const res = await fetch("http://localhost:3001/api/v1/groups", {
+        const res = await fetch("https://uptrackme.onrender.com/groups", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newGroup),
@@ -44,7 +44,7 @@ const GroupContextProvider = (props) => {
 
   const updateGroup = async (pGroup) => {
     try {
-      await fetch("http://localhost:3001/api/v1/groups/" + pGroup.id, {
+      await fetch("https://uptrackme.onrender.com/groups/" + pGroup.id, {
         method: "PUT",
         body: JSON.stringify(pGroup),
         headers: { "Content-Type": "application/json" },
@@ -60,7 +60,7 @@ const GroupContextProvider = (props) => {
 
   const deleteGroup = async (pGroupId) => {
     try {
-      await fetch("http://localhost:3001/api/v1/groups/" + pGroupId, {
+      await fetch("https://uptrackme.onrender.com/groups/" + pGroupId, {
         method: "DELETE",
       });
       const updateDGroupList = groupList.filter(

@@ -20,7 +20,7 @@ const StudentContextProvider = (props) => {
 
   const getStudentList = async () => {
     try {
-      const response = await fetch("http://localhost:3001/api/v1/students");
+      const response = await fetch("https://uptrackme.onrender.com/students");
       const studentList = await response.json();
       setStudentList(studentList);
     } catch (error) {
@@ -31,14 +31,14 @@ const StudentContextProvider = (props) => {
   };
 
   // const getStudentsInGroup = async (pId) => {
-  //   const response = await fetch("http://localhost:3001/api/v1/students" + pId);
+  //   const response = await fetch("https://uptrackme.onrender.com/students" + pId);
   //   const studentList = await response.json();
   //   const group = studentList.filter((student) => student.GroupId == pId);
   //   setStudentsInGroup(group);
   // };
 
   const getStudentById = async (pId) => {
-    try {const response = await fetch(`http://localhost:3001/api/v1/students/${pId}`);
+    try {const response = await fetch(`https://uptrackme.onrender.com/students/${pId}`);
     const student = await response.json();
     // const student = studentList.find((student) => student.id == pId);
     setStudent(studentList.find((student) => student.id === pId));
@@ -57,7 +57,7 @@ const StudentContextProvider = (props) => {
       img: pStudent.img,
     }
     try {
-        await fetch("http://localhost:3001/api/v1/students", {
+        await fetch("https://uptrackme.onrender.com/students", {
         method: "POST",
         body: JSON.stringify(newStudent),
         headers: { "Content-Type": "application/json" },
@@ -78,7 +78,7 @@ const StudentContextProvider = (props) => {
 
   const updateStudent = async (pStudent) => {
     try {
-      await fetch("http://localhost:3001/api/v1/students/" + pStudent.id, {
+      await fetch("https://uptrackme.onrender.com/students/" + pStudent.id, {
         method: "PUT",
         body: JSON.stringify(pStudent),
         headers: { "Content-Type": "application/json" },
@@ -97,7 +97,7 @@ const StudentContextProvider = (props) => {
 
   const deleteStudent = async (pStudentId) => {
     try {
-      await fetch("http://localhost:3001/api/v1/students/" + pStudentId, {
+      await fetch("https://uptrackme.onrender.com/students/" + pStudentId, {
         method: "DELETE",
       });
       const updateDStudentList = studentList.filter(

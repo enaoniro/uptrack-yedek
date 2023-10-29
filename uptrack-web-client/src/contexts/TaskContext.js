@@ -17,13 +17,13 @@ const TaskContextProvider = (props) => {
   }, []);
 
   const getTaskList = async () => {
-    const response = await fetch("http://localhost:3001/api/v1/tasks");
+    const response = await fetch("https://uptrackme.onrender.com/tasks");
     const taskList = await response.json();
     setTaskList(taskList);
   };
 
   const getTaskByStudentId = async (id) => {
-    const response = await fetch(`http://localhost:3001/api/v1/tasks/${id}`);
+    const response = await fetch(`https://uptrackme.onrender.com/tasks/${id}`);
     const suttasks = await response.json();
     setStudentTasks(suttasks);
   };
@@ -39,7 +39,7 @@ const TaskContextProvider = (props) => {
       StudentId: id,
     };
     try {
-      await fetch("http://localhost:3001/api/v1/tasks", {
+      await fetch("https://uptrackme.onrender.com/tasks", {
         method: "POST",
         body: JSON.stringify(newTask),
         headers: { "Content-Type": "application/json" },
@@ -55,7 +55,7 @@ const TaskContextProvider = (props) => {
   const updateTask = async (pTask) => {
     console.log(pTask.id);
     try {
-      await fetch("http://localhost:3001/api/v1/tasks/" + pTask.id, {
+      await fetch("https://uptrackme.onrender.com/tasks/" + pTask.id, {
         method: "PUT",
         body: JSON.stringify(pTask),
         headers: { "Content-Type": "application/json" },
@@ -74,7 +74,7 @@ const TaskContextProvider = (props) => {
     const newTask = { ...pTask, isCompleted: !pTask.isCompleted };
 
     try {
-      const res = await fetch("http://localhost:3001/api/v1/tasks/settask/" + pTask.id, {
+      const res = await fetch("https://uptrackme.onrender.com/tasks/settask/" + pTask.id, {
         method: "PUT",
         body: JSON.stringify(newTask),
         headers: { "Content-Type": "application/json" },

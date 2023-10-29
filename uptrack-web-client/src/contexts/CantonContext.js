@@ -15,7 +15,7 @@ const CantonContextProvider = (props) => {
   // const checkAuthenticatedCanton=async(pCanton) => {
   //   console.log(pCanton)
 
-  //   const response = await fetch('http://localhost:3001/api/v1/cantons/check', {
+  //   const response = await fetch('https://uptrackme.onrender.com/cantons/check', {
   //       method: 'post',
   //       body: JSON.stringify(pCanton),
   //       headers: { "Content-Type": "application/json" }
@@ -26,7 +26,7 @@ const CantonContextProvider = (props) => {
   // }
 
   const getCantonList = async () => {
-    const response = await fetch("http://localhost:3001/api/v1/cantons");
+    const response = await fetch("https://uptrackme.onrender.com/cantons");
     const cantonList = await response.json();
     setCantonList(cantonList);
   };
@@ -39,7 +39,7 @@ const CantonContextProvider = (props) => {
       manager: pCanton.manager,
     };
     try {
-      await fetch("http://localhost:3001/api/v1/cantons", {
+      await fetch("https://uptrackme.onrender.com/cantons", {
         method: "POST",
         body: JSON.stringify(pCanton),
         headers: { "Content-Type": "application/json" },
@@ -53,7 +53,7 @@ const CantonContextProvider = (props) => {
 
   const updateCanton = async (pCanton) => {
     try {
-      await fetch("http://localhost:3001/api/v1/cantons/" + pCanton.id, {
+      await fetch("https://uptrackme.onrender.com/cantons/" + pCanton.id, {
         method: "PUT",
         body: JSON.stringify(pCanton),
         headers: { "Content-Type": "application/json" },
@@ -71,7 +71,7 @@ const CantonContextProvider = (props) => {
 
   const deleteCanton = async (pCantonId) => {
     try {
-      await fetch("http://localhost:3001/api/v1/cantons/" + pCantonId, {
+      await fetch("https://uptrackme.onrender.com/cantons/" + pCantonId, {
         method: "DELETE",
       });
       const updatedCantonList = cantonList.filter(
