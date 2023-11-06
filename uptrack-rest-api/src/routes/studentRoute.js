@@ -50,7 +50,7 @@ router.post('/', async (req, res) => {
 //   }
 // });
   
-  export default router;
+
 
 router.put('/:id', async (req, res) => {
   const id = Number(req.params.id);
@@ -65,4 +65,4 @@ router.delete('/:id', async (req, res) => {
   res.status(200).send('Deleted!');
 });
 
-
+export default router;
