@@ -72,11 +72,11 @@ function Home() {
           <div className="w-100 h-100 d-flex justify-items-center bg-white align-items-center flex-column ">
             <div className="bg-white">
               <h1>please login</h1>
-              <p>
+              {/* <p>
                 You can login with the below information:<br></br>
                 email:uptracknewuser@gmail.com<br></br>
                 password:Uptrack.1
-              </p>
+              </p> */}
               <button
                 className="btn btn-outline-success"
                 onClick={() => loginWithRedirect()}
