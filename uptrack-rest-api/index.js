@@ -6,10 +6,10 @@ import userRoute from "./src/routes/UserRoute.js";
 import studentRoute from "./src/routes/StudentRoute.js";
 // import adminRoute from './src/routes/AdminRoute.js';
 import cantonRoute from "./src/routes/CantonRoute.js";
-import groupRoute from "./src/routes/GroupRoute.js";
+import grupRoute from "./src/routes/GrupRoute.js";
 import taskRoute from "./src/routes/TaskRoute.js";
 import targetRoute from "./src/routes/TargetRoute.js";
-import recordRoute from './src/routes/RecordRoute.js';
+import recordRoute from "./src/routes/RecordRoute.js";
 // import mongoose from "mongoose";
 
 const app = express();
@@ -29,9 +29,9 @@ app.use(bodyParser.json());
 app.use("/api/v1/users", userRoute);
 app.use("/api/v1/tasks", taskRoute);
 app.use("/api/v1/targets", targetRoute);
-app.use('/api/v1/records', recordRoute);
+app.use("/api/v1/records", recordRoute);
 app.use("/api/v1/cantons", cantonRoute);
-app.use("/api/v1/groups", groupRoute);
+app.use("/api/v1/grups", grupRoute);
 app.use("/api/v1/students", studentRoute);
 
 app.listen(port, () => {

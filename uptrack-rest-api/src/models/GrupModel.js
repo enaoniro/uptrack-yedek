@@ -1,5 +1,6 @@
 import { Sequelize, DataTypes } from "sequelize";
-import Grup from "./GrupModel.js";
+import Canton from "./CantonModel.js";
+import Student from "./StudentModel.js";
 // import sequelize from "../commons/sequelize.js"
 
 const sequelize = new Sequelize("users", "root", "50473524su", {
@@ -7,19 +8,23 @@ const sequelize = new Sequelize("users", "root", "50473524su", {
   dialect: "mysql",
 });
 
-const Canton = sequelize.define(
-  "Canton",
+const Grup = sequelize.define(
+  "Grup",
   {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
+    CantonId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    email: {
+    leader: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -30,17 +35,20 @@ const Canton = sequelize.define(
   }
 );
 
-//    Canton.associate = (models) => {
-//  Canton.hasMany(models.Grup, {
+//  Grup.associate = (models) => {
+//  Grup.hasMany(models.Student, {
 //    foreignKey: {
-//      name: 'CantonId',
+//      name: 'GrupId',
 //      allowNull: false
 //    },
 //    as: 'grups'
 //  });}
-// Grup.belongsTo(Canton);
-// Canton.hasMany(Grup);
+
+Canton.hasMany(Grup);
+Grup.belongsTo(Canton);
+
+// // Grup.belongsTo(Canton);
 
 await sequelize.sync({ alter: true });
 
-export default Canton;
+export default Grup;

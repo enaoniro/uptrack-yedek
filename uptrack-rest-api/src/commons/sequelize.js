@@ -1,25 +1,20 @@
-import 'dotenv/config';
-import { Sequelize, DataTypes, Model  } from 'sequelize';
-import User from '../models/UserModel.js';
-import Role from '../models/RoleModel.js';
-import Record from '../models/RecordModel.js';
-import Student from '../models/StudentModel.js';
-import Target from '../models/TargetModel.js';
-import Canton from '../models/CantonModel.js';
-import Group from '../models/GroupModel.js';
-import Task from '../models/TaskModel.js';
-
+import "dotenv/config";
+import { Sequelize, DataTypes, Model } from "sequelize";
+import User from "../models/UserModel.js";
+import Role from "../models/RoleModel.js";
+import Record from "../models/RecordModel.js";
+import Student from "../models/StudentModel.js";
+import Target from "../models/TargetModel.js";
+import Canton from "../models/CantonModel.js";
+import Grup from "../models/GrupModel.js";
+import Task from "../models/TaskModel.js";
 
 const password = process.env.REACT_APP_PASSWORD;
 
-
-
-
-const sequelize = new Sequelize('users', 'root', password, {
-  host: 'localhost',
-  dialect: 'mysql',
+const sequelize = new Sequelize("users", "root", password, {
+  host: "localhost",
+  dialect: "mysql",
 });
-
 
 // const User = sequelize.define('User', {
 //     id: {
@@ -34,7 +29,7 @@ const sequelize = new Sequelize('users', 'root', password, {
 //     email: {
 //         type: DataTypes.STRING,
 //         allowNull:false,
-  
+
 //     }
 //   },
 //     {
@@ -42,17 +37,16 @@ const sequelize = new Sequelize('users', 'root', password, {
 //       createdAt: false
 //     });
 
-    
 // const Student = sequelize.define('Student', {
 //     id: {type: DataTypes.INTEGER,
 //           autoIncrement: true,
 //           primaryKey: true},
-    
+
 //     first_name:{type: DataTypes.STRING,
 //     last_name: DataTypes.STRING,
 //     email:DataTypes.STRING,
 //   }
-// }); 
+// });
 
 //   const Role = sequelize.define('Roles', {
 //     id: {
@@ -64,11 +58,10 @@ const sequelize = new Sequelize('users', 'root', password, {
 //       type: DataTypes.STRING,
 //       allowNull: false,
 //     },
-   
-  
+
 //   });
 
-//   const Group = sequelize.define('Group', {
+//   const Grup = sequelize.define('Grup', {
 //     id: {
 //       type: DataTypes.INTEGER,
 //       autoIncrement: true,
@@ -78,7 +71,7 @@ const sequelize = new Sequelize('users', 'root', password, {
 //       type: DataTypes.STRING,
 //       allowNull: false,
 //     },
-    
+
 //   },
 //     {
 //       timestamps: false,
@@ -95,13 +88,12 @@ const sequelize = new Sequelize('users', 'root', password, {
 //           type: DataTypes.STRING,
 //           allowNull: false,
 //         },
-       
+
 //       },
 //         {
 //           timestamps: false,
 //           createdAt: false
 //         });
-      
 
 // const Task = sequelize.define('Task', {
 //     id: {
@@ -129,14 +121,12 @@ const sequelize = new Sequelize('users', 'root', password, {
 //       type: DataTypes.STRING,
 //       allowNull:false,
 //   },
-  
+
 //   },
 //     {
 //       timestamps: false,
 //       createdAt: false
 //     });
-
-    
 
 // const Target = sequelize.define('Target', {
 //     id: {
@@ -164,7 +154,7 @@ const sequelize = new Sequelize('users', 'root', password, {
 //       type: DataTypes.INTEGER,
 //       allowNull:false,
 //   },
-  
+
 //   },
 //     {
 //       timestamps: false,
@@ -180,27 +170,21 @@ const sequelize = new Sequelize('users', 'root', password, {
 //         },
 //         selfGranted: DataTypes.BOOLEAN
 //       }, { timestamps: false });
-  
-  
-
 
 // Role.hasMany(User);
 // User.belongsTo(Role);
 
-// Canton.hasMany(Group);
-// Group.belongsTo(Canton);
+// Canton.hasMany(Grup);
+// Grup.belongsTo(Canton);
 
-// Group.hasMany(Student);
-// Student.belongsTo(Group);
+// Grup.hasMany(Student);
+// Student.belongsTo(Grup);
 
 // Student.hasMany(Task);
 // Task.belongsTo(Student);
 
 // Task.hasOne(Target);
 // Target.hasOne(Record);
-
-
-
 
 // // // All these work:
 // // User.findAll({ include: Profile });
@@ -211,20 +195,20 @@ const sequelize = new Sequelize('users', 'root', password, {
 // // Grant.findAll({ include: Profile });
 
 const connectToDatabase = async () => {
-    try {
-        await sequelize.authenticate();
-        await User.sync();
-        await Role.sync();
-        await Canton.sync();
-        await Group.sync();
-        await Student.sync();
-        await Task.sync();
-        await Target.sync();
-        await Record.sync();
-        console.log('Connected to database!');
-    } catch (err) {
-        console.log(err);
-    }
-}
- export default sequelize
+  try {
+    await sequelize.authenticate();
+    await User.sync();
+    await Role.sync();
+    await Canton.sync();
+    await Grup.sync();
+    await Student.sync();
+    await Task.sync();
+    await Target.sync();
+    await Record.sync();
+    console.log("Connected to database!");
+  } catch (err) {
+    console.log(err);
+  }
+};
+export default sequelize;
 connectToDatabase();

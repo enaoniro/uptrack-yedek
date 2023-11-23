@@ -1,9 +1,9 @@
 import Canton from "../models/CantonModel.js";
-import Group from "../models/GroupModel.js";
+import Grup from "../models/GrupModel.js";
 
 const getCantonList = async () => {
   return await Canton.findAll({
-    include: Group,
+    include: Grup,
   });
 };
 
