@@ -51,7 +51,7 @@ const SingleGrup = () => {
                 onClick={handleClick}
               >
                 {/* <a className="text-decoration-none" href="http://localhost:3000/grup" >{grup.name}</a>  */}
-                {grup.id}-{grup.leader} grup
+                {grup.id}-{grup.leader} group
               </td>
               {/* <td colSpan={2} className="text-capitalize text-primary bg-body fw-bolder text-center">{grup.leader}</td> */}
               {/* <td className="text-capitalize text-primary bg-body fw-bolder text-center p-5">{grup.Canton.name}</td> */}
@@ -63,7 +63,7 @@ const SingleGrup = () => {
                   data-bs-toggle="modal"
                   data-bs-target={"#updateGrupModal" + grup.id}
                 >
-                  update Grup
+                  update Group
                 </button>
               </td>
               <td>
@@ -71,7 +71,7 @@ const SingleGrup = () => {
                   onClick={() => deleteGrup(id)}
                   className="w-100 btn btn-danger opacity-75 "
                 >
-                  Delete Grup
+                  Delete Group
                 </button>
               </td>
               <td

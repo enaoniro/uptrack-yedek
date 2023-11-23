@@ -43,7 +43,7 @@ const AddGrup = ({ canton }) => {
     <>
       <div>
         <h5 className="modal-title" id="exampleModalLabel">
-          Add Grup
+          Add Group
         </h5>
         {/* <button
             type="button"
@@ -55,7 +55,7 @@ const AddGrup = ({ canton }) => {
       <div className="modal-body">
         <form className="mb-4" onSubmit={handleSubmit}>
           <div>
-            <h6 color="blue">grup bilgilerini giriniz</h6>
+            <h6 color="blue">group bilgilerini giriniz</h6>
             <input
               type="text"
               className="form-control bg-info"

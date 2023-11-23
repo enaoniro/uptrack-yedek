@@ -24,7 +24,7 @@ const GrupList = ({ canton }) => {
             <th className="text-center">Grup Id</th> */}
 
             {/* <th>Grup id</th>    */}
-            <th>Grups</th>
+            <th>Groups</th>
             {/* <th>actions</th>    */}
           </tr>
         </thead>

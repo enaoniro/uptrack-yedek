@@ -23,7 +23,7 @@ const UpdateGrup = ({ grup }) => {
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="exampleModalLabel">
-              Update Grup
+              Update Group
             </h5>
             <button
               type="button"
@@ -35,7 +35,7 @@ const UpdateGrup = ({ grup }) => {
           <div className="modal-body">
             <form className="mb-4" onSubmit={handleSubmit}>
               <div>
-                <h6>Grup name</h6>
+                <h6>Group name</h6>
                 <input
                   type="text"
                   className="form-control bg-info"
@@ -44,7 +44,7 @@ const UpdateGrup = ({ grup }) => {
                   value={updatedGrup.name}
                   onChange={handleChange}
                 />
-                <h6>Grup Leader</h6>
+                <h6>Group Leader</h6>
                 <input
                   type="text"
                   className="form-control bg-info"

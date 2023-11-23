@@ -53,7 +53,7 @@ const Grup = ({ grup }) => {
             data-bs-toggle="modal"
             data-bs-target={"#updateGrupModal" + grup.id}
           >
-            update Grup
+            update Group
           </button>
           {/* </td>
               <td> */}
@@ -61,7 +61,7 @@ const Grup = ({ grup }) => {
             onClick={() => deleteGrup(grup.id)}
             className="w-100 btn btn-danger opacity-75 "
           >
-            Delete Grup
+            Delete Group
           </button>
         </td>
         <td
