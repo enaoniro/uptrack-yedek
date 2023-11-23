@@ -6,7 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { UserContext } from "../contexts/UserContext";
 import Admin from "./Admin";
 import CantonManager from "./CantonManager";
-import GroupLeader from "../components/GroupLeader";
+import GrupLeader from "../components/GrupLeader";
 import Layout from "./Layout";
 
 function Navbar() {

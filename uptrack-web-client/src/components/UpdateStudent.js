@@ -58,12 +58,12 @@ const UpdateStudent = ({ student }) => {
                 value={updatedStudent.email}
                 onChange={handleChange}
               />
-              <h6>group no</h6>
+              <h6>grup no</h6>
               <input
                 type="number"
                 className="form-control bg-info"
-                name="GroupId"
-                value={updatedStudent.GroupId}
+                name="GrupId"
+                value={updatedStudent.GrupId}
                 onChange={handleChange}
               />
               <h6>task no</h6>

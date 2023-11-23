@@ -6,16 +6,15 @@ import reportWebVitals from "./reportWebVitals";
 import { Auth0Provider } from "@auth0/auth0-react";
 import UserContextProvider from "./contexts/UserContext";
 import CantonContextProvider from "./contexts/CantonContext";
-import GroupContextProvider from "./contexts/GroupContext";
+import GrupContextProvider from "./contexts/GrupContext";
 import StudentContextProvider from "./contexts/StudentContext";
 import TaskContextProvider from "./contexts/TaskContext";
 import TargetContextProvider from "./contexts/TargetContext";
-import RecordContextProvider from './contexts/RecordContext';
+import RecordContextProvider from "./contexts/RecordContext";
 import { BrowserRouter } from "react-router-dom";
 import { Router, Routes, Route, Switch, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
@@ -24,25 +23,25 @@ const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 root.render(
   <BrowserRouter>
     <Auth0Provider
-      domain= "dev-nvkdil22.eu.auth0.com"
+      domain="dev-nvkdil22.eu.auth0.com"
       clientId="tL3vLjSd8ZphVAxt4GgwgqOiZNYpTjsz"
       redirectUri={window.location.origin}
     >
       <UserContextProvider>
         <CantonContextProvider>
-          <GroupContextProvider>
+          <GrupContextProvider>
             <StudentContextProvider>
               <TaskContextProvider>
                 <TargetContextProvider>
                   <RecordContextProvider>
-                  <Routes>
-                    <Route path="/*" element={<App />} />
-                  </Routes>
+                    <Routes>
+                      <Route path="/*" element={<App />} />
+                    </Routes>
                   </RecordContextProvider>
                 </TargetContextProvider>
               </TaskContextProvider>
             </StudentContextProvider>
-          </GroupContextProvider>
+          </GrupContextProvider>
         </CantonContextProvider>
       </UserContextProvider>
     </Auth0Provider>

@@ -5,7 +5,7 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import { useAuth0 } from "@auth0/auth0-react";
 import Container from "react-bootstrap/Container";
-import { GroupContext } from "../contexts/GroupContext";
+import { GrupContext } from "../contexts/GrupContext";
 import { TargetContext } from "../contexts/TargetContext";
 import { RecordContext } from "../contexts/RecordContext";
 import { TaskContext } from "../contexts/TaskContext";
@@ -50,7 +50,7 @@ const SingleStudent = () => {
 
   console.log(studentList);
 
-  const { groupList } = useContext(GroupContext);
+  const { grupList } = useContext(GrupContext);
 
   const student = studentList.find((student) => student.id == id);
   console.log(student);
@@ -126,9 +126,9 @@ const SingleStudent = () => {
                 <li className="nav-item text-align-center">
                   <a
                     className="nav-link text-primary"
-                    href="http://localhost:3000/group"
+                    href="http://localhost:3000/grup"
                   >
-                    Group Page
+                    Grup Page
                   </a>
                 </li>
                 {/* <li className="nav-item">
@@ -236,7 +236,6 @@ const SingleStudent = () => {
               </div>
               <div className="col-lg-10 bg-white mt-2" id="details-div">
                 <Table
-                  
                   bordered
                   className="bg-white shadow-lg mt-3 "
                   style={{ maxWidth: "100%" }}
@@ -277,7 +276,7 @@ const SingleStudent = () => {
                         </span>
                         <br></br>
                         <span className="text-black">
-                          groupId :{student.GroupId}
+                          grupId :{student.GrupId}
                         </span>
                         <br></br>
                         <span className="text-black">

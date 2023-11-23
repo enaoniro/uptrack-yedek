@@ -1,49 +1,47 @@
 import React, { useContext, useState } from "react";
 import { StudentContext } from "../contexts/StudentContext";
-import { GroupContext } from "../contexts/GroupContext";
+import { GrupContext } from "../contexts/GrupContext";
 import Student from "./Student";
 import SingleStudent from "./SingleStudent";
 import Table from "react-bootstrap/Table";
 import Container from "react-bootstrap/Container";
 import { useNavigate, useParams } from "react-router-dom";
 
-const StudentList = ({ showDetails, setShowDetails, group }) => {
+const StudentList = ({ showDetails, setShowDetails, grup }) => {
   const [singleStudent, setSingleStudent] = useState("");
 
-  console.log(group);
+  console.log(grup);
 
   console.log("student list is rendered");
 
   const {
-    studentsInGroup,
-    setStudentsInGroup,
-    getStudentsInGroup,
+    studentsInGrup,
+    setStudentsInGrup,
+    getStudentsInGrup,
     studentList,
     setStudent,
     student,
   } = useContext(StudentContext);
-  const { groupList } = useContext(GroupContext);
+  const { grupList } = useContext(GrupContext);
   console.log(studentList);
 
-  const groupStudents = group.Students; //studentList?.filter(
-  // (student) => student?.GroupId === group?.id );
-  console.log(groupStudents);
-  if (!groupStudents) {
-    alert("no groupStudents exists!");
+  const grupStudents = grup.Students; //studentList?.filter(
+  // (student) => student?.GrupId === grup?.id );
+  console.log(grupStudents);
+  if (!grupStudents) {
+    alert("no grupStudents exists!");
   }
-  // let id  = groupStudents.id ;
+  // let id  = grupStudents.id ;
   const navigate = useNavigate();
-
 
   // const setStudent= (e) => {
   //   e.preventDefault();
-
 
   // }
 
   return (
     <div className="container-fluid bg-white shadow-lg ">
-        <Table className="bg-white table-responsive-sm mt-3" bordered hover>
+      <Table className="bg-white table-responsive-sm mt-3" bordered hover>
         <thead>
           <tr className=" opacity-75 border-3 " style={{ hover: "red" }}>
             <th className="text-black">no</th>
@@ -55,7 +53,7 @@ const StudentList = ({ showDetails, setShowDetails, group }) => {
               email
             </th>
             <th className="text-black" rowSpan={2}>
-              group
+              grup
             </th>
             <th className="text-black" rowSpan={2}>
               id
@@ -67,35 +65,32 @@ const StudentList = ({ showDetails, setShowDetails, group }) => {
           </tr>
         </thead>
         <tbody className="">
-          {groupStudents?.map((student, index) => (
+          {grupStudents?.map((student, index) => (
             <tr
               style={{ cursor: "pointer" }}
               key={index}
               onClick={() => {
-                navigate(`/students/${student.id}`)
-              //   setSingleStudent(e.target.value)
-                
-               }}
+                navigate(`/students/${student.id}`);
+                //   setSingleStudent(e.target.value)
+              }}
             >
               <td>{index + 1}</td>
               <td>{student.first_name}</td>
               <td>{student.last_name}</td>
               <td>{student.email}</td>
-              <td>{student.GroupId}</td>
+              <td>{student.GrupId}</td>
               <td>{student.id}</td>
             </tr>
           ))}
         </tbody>
         <tfoot>
           <tr>
-            <td>number of students: {group.Students.length }</td>
-      
+            <td>number of students: {grup.Students.length}</td>
           </tr>
         </tfoot>
       </Table>
       {/* <SingleStudent id={singleStudent} /> */}
-     
-      
+
       {/* </Container> */}
     </div>
   );

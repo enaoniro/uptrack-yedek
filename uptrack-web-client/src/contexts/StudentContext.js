@@ -8,7 +8,7 @@ const StudentContextProvider = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [student, setStudent] = useState({});
   const [selectedStudent, setSelectedStudent] = useState({});
-  const [studentsInGroup, setStudentsInGroup] = useState([]);
+  const [studentsInGrup, setStudentsInGrup] = useState([]);
 
   const navigate = useNavigate();
 
@@ -30,34 +30,38 @@ const StudentContextProvider = (props) => {
     }
   };
 
-  // const getStudentsInGroup = async (pId) => {
+  // const getStudentsInGrup = async (pId) => {
   //   const response = await fetch("https://uptrackme.onrender.com/students" + pId);
   //   const studentList = await response.json();
-  //   const group = studentList.filter((student) => student.GroupId == pId);
-  //   setStudentsInGroup(group);
+  //   const grup = studentList.filter((student) => student.GrupId == pId);
+  //   setStudentsInGrup(grup);
   // };
 
   const getStudentById = async (pId) => {
-    try {const response = await fetch(`https://uptrackme.onrender.com/students/${pId}`);
-    const student = await response.json();
-    // const student = studentList.find((student) => student.id == pId);
-    setStudent(studentList.find((student) => student.id === pId));
-    
-  } catch (error) {
-    if (error) {
-    console.log(error)
-  }}};
+    try {
+      const response = await fetch(
+        `https://uptrackme.onrender.com/students/${pId}`
+      );
+      const student = await response.json();
+      // const student = studentList.find((student) => student.id == pId);
+      setStudent(studentList.find((student) => student.id === pId));
+    } catch (error) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
 
   const addStudent = async (pStudent, id) => {
     const newStudent = {
       first_name: pStudent.first_name,
-      last_name:pStudent.last_name,
+      last_name: pStudent.last_name,
       email: pStudent.email,
-      GroupId: id,
+      GrupId: id,
       img: pStudent.img,
-    }
+    };
     try {
-        await fetch("https://uptrackme.onrender.com/students", {
+      await fetch("https://uptrackme.onrender.com/students", {
         method: "POST",
         body: JSON.stringify(newStudent),
         headers: { "Content-Type": "application/json" },
@@ -66,11 +70,11 @@ const StudentContextProvider = (props) => {
       // const data = await res.json();
 
       // setStudentList([...studentList, data]);
-      setStudentList( [...studentList, newStudent]);
-      console.log(studentList)
-    //  getStudentList();
-    // navigate("/")
-      console.log("student context add student is rendered")
+      setStudentList([...studentList, newStudent]);
+      console.log(studentList);
+      //  getStudentList();
+      // navigate("/")
+      console.log("student context add student is rendered");
     } catch (error) {
       console.log(error);
     }
@@ -89,7 +93,6 @@ const StudentContextProvider = (props) => {
           student.id === pStudent.id ? pStudent : student
         )
       );
-      
     } catch (error) {
       console.log(error);
     }
@@ -105,10 +108,9 @@ const StudentContextProvider = (props) => {
       );
 
       setStudentList(updateDStudentList);
-      getStudentList()
-      alert("the student is deleted!")
-      navigate("/")
-
+      getStudentList();
+      alert("the student is deleted!");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -129,10 +131,10 @@ const StudentContextProvider = (props) => {
         setStudent,
         addStudent,
         updateStudent,
-        setStudentsInGroup,
-        studentsInGroup,
+        setStudentsInGrup,
+        studentsInGrup,
         getStudentList,
-        // getStudentsInGroup,
+        // getStudentsInGrup,
         deleteStudent,
         studentList,
         setStudentList,

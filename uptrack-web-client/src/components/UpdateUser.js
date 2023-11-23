@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/UserContext.js";
-import { GroupContext } from "../contexts/GroupContext.js";
+import { GrupContext } from "../contexts/GrupContext.js";
 import Form from "react-bootstrap/Form";
 
 const UpdateUser = ({ user }) => {
   const [updatedUser, setUpdatedUser] = useState(user);
   const [userList, setUserList] = useState([]);
 
-  const { addUser, updateUser, getUserList, isOpen, setIsOpen } =
-    useContext(UserContext);
+  const { addUser, updateUser, getUserList, isOpen, setIsOpen } = useContext(
+    UserContext
+  );
 
   const handleOnChange = (e) => {
     setUpdatedUser({ ...updatedUser, [e.target.name]: e.target.value });

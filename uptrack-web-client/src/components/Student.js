@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { StudentContext } from "../contexts/StudentContext";
-import { GroupContext } from "../contexts/GroupContext";
+import { GrupContext } from "../contexts/GrupContext";
 import { TaskContext } from "../contexts/TaskContext";
 import { TargetContext } from "../contexts/TargetContext";
 import { RecordContext } from "../contexts/RecordContext";
@@ -33,7 +33,7 @@ const Student = ({ student }) => {
   } = useContext(StudentContext);
 
   // const student = students.map((student) => student);
-  const { groupList } = useContext(GroupContext);
+  const { grupList } = useContext(GrupContext);
 
   const { taskList } = useContext(TaskContext);
   console.log(taskList);
@@ -68,9 +68,9 @@ const Student = ({ student }) => {
           <span className="text-black"></span> {student.email}
         </td>
         <td>
-          {groupList
-            .filter((group) => group.id == student.GroupId)
-            .map((group) => group.name)}
+          {grupList
+            .filter((grup) => grup.id == student.GrupId)
+            .map((grup) => grup.name)}
         </td>
         {/* <td className="">
         <p className=" bg-secondary text-dark bg-opacity-25">

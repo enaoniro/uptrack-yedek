@@ -1,52 +1,49 @@
 import React, { useState, useContext, useEffect } from "react";
-import { GroupContext } from "../contexts/GroupContext";
+import { GrupContext } from "../contexts/GrupContext";
 import { StudentContext } from "../contexts/StudentContext";
-import UpdateGroup from "./UpdateGroup";
+import UpdateGrup from "./UpdateGrup";
 import Table from "react-bootstrap/Table";
 import StudentList from "./StudentList";
 import Student from "./Student.js";
 import { useNavigate } from "react-router-dom";
 
-const Group = ({ group }) => {
+const Grup = ({ grup }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [groupStudents, setGroupStudents] = useState([]);
-  const [groupName, setGroupName] = useState("");
-  console.log(group);
+  const [grupStudents, setGrupStudents] = useState([]);
+  const [grupName, setGrupName] = useState("");
+  console.log(grup);
 
-  const { groupList, deleteGroup } = useContext(GroupContext);
+  const { grupList, deleteGrup } = useContext(GrupContext);
   const { studentList, setStudentList } = useContext(StudentContext);
 
-  // console.log(groupStudents);
+  // console.log(grupStudents);
 
   const navigate = useNavigate();
 
   const handleClick = () => {
-    setGroupStudents(
-      studentList.find((student) => student.GroupId === group.id)
-    );
+    setGrupStudents(studentList.find((student) => student.GrupId === grup.id));
 
-    navigate(`/group/${group.id}`);
+    navigate(`/grup/${grup.id}`);
   };
 
   return (
     <>
-      <tr className="w-100 d-flex bg-white"  onClick={handleClick} key={group.id}>
+      <tr className="w-100 d-flex bg-white" onClick={handleClick} key={grup.id}>
         <td
-         
           style={{ cursor: "pointer" }}
           className="w-100 text-capitalize text-center d-flex justify-content-center align-items-center"
           // colSpan={2}
         >
-          {/* <a className="text-decoration-none" href="http://localhost:3000/group" >{group.name}</a>  */}
-          {group.id}
+          {/* <a className="text-decoration-none" href="http://localhost:3000/grup" >{grup.name}</a>  */}
+          {grup.id}
         </td>
         <td
           style={{ cursor: "pointer" }}
           className="w-100 text-capitalize text-center d-flex justify-content-center align-items-center"
           // colSpan={2}
         >
-          {/* <a className="text-decoration-none" href="http://localhost:3000/group" >{group.name}</a>  */}
-          {group.leader}
+          {/* <a className="text-decoration-none" href="http://localhost:3000/grup" >{grup.name}</a>  */}
+          {grup.leader}
         </td>
 
         <td className="w-100 text-capitalize text-center d-flex justify-content-center align-items-center fw-bolder opacity-75">
@@ -54,31 +51,31 @@ const Group = ({ group }) => {
             type="button"
             className="w-100 btn btn-primary"
             data-bs-toggle="modal"
-            data-bs-target={"#updateGroupModal" + group.id}
+            data-bs-target={"#updateGrupModal" + grup.id}
           >
-            update Group
+            update Grup
           </button>
           {/* </td>
               <td> */}
           <button
-            onClick={() => deleteGroup(group.id)}
+            onClick={() => deleteGrup(grup.id)}
             className="w-100 btn btn-danger opacity-75 "
           >
-            Delete Group
+            Delete Grup
           </button>
         </td>
         <td
           className="modal fade"
-          id={"updateGroupModal" + group.id}
+          id={"updateGrupModal" + grup.id}
           tabIndex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
         >
-          <UpdateGroup group={group} />
+          <UpdateGrup grup={grup} />
         </td>
       </tr>
     </>
   );
 };
 
-export default Group;
+export default Grup;

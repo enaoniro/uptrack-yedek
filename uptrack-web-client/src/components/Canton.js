@@ -1,15 +1,15 @@
 import React, { useState, useContext } from "react";
 import { CantonContext } from "../contexts/CantonContext";
-import { GroupContext } from "../contexts/GroupContext";
+import { GrupContext } from "../contexts/GrupContext";
 import UpdateCanton from "./UpdateCanton";
 import Table from "react-bootstrap/Table";
-import Group from "./Group.js";
+import Grup from "./Grup.js";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Canton = ({ canton }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [cantonGroups, setCantonGroups] = useState([]);
+  const [cantonGrups, setCantonGrups] = useState([]);
   console.log(canton);
 
   let { id } = useParams();
@@ -17,17 +17,17 @@ const Canton = ({ canton }) => {
   // console.log(canton)
 
   const { cantonList, deleteCanton } = useContext(CantonContext);
-  const { groupList } = useContext(GroupContext);
-  // const groups = groupList.find((group) => group.CantonId == id);
-  // console.log(groups)
+  const { grupList } = useContext(GrupContext);
+  // const grups = grupList.find((grup) => grup.CantonId == id);
+  // console.log(grups)
 
-  const groups = canton.Groups;
+  const grups = canton.Grups;
 
   const navigate = useNavigate();
 
   const handleClick = () => {
-    // setGroupName(event.target.innerText);
-    setCantonGroups(groupList.filter((group) => group.CantonId == canton.id));
+    // setGrupName(event.target.innerText);
+    setCantonGrups(grupList.filter((grup) => grup.CantonId == canton.id));
     // setIsOpen(!isOpen);
     navigate(`/canton/${canton.id}`);
   };
@@ -40,7 +40,6 @@ const Canton = ({ canton }) => {
             <td
               style={{ cursor: "pointer" }}
               className="opacity-75 text-capitalize py-5 bg-white text-primary fw-bolder "
-            
             >
               <span>{canton.name}</span>
             </td>
@@ -78,14 +77,14 @@ const Canton = ({ canton }) => {
         <Table bordered hover className="w-100 bg-white">
           <thead>
             <tr>
-              <th>group id</th>
-              <th>group name</th>
+              <th>grup id</th>
+              <th>grup name</th>
               <th>actions</th>
             </tr>
           </thead>
           <tbody>
-            {groups.map((group) => (
-              <Group group={group} key={group.id} />
+            {grups.map((grup) => (
+              <Grup grup={grup} key={grup.id} />
             ))}
           </tbody>
         </Table>

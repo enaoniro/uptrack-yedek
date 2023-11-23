@@ -2,21 +2,21 @@ import React, { useContext, useRef } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Table from "react-bootstrap/Table";
 import Container from "react-bootstrap/Container";
-import AddGroup from "./AddGroup.js";
-// import UpdateGroup from "./UpdateGroup.js";
-import GroupList from "./GroupList.js";
+import AddGrup from "./AddGrup.js";
+// import UpdateGrup from "./UpdateGrup.js";
+import GrupList from "./GrupList.js";
 import CantonList from "./CantonList.js";
-import Group from "./Group.js";
+import Grup from "./Grup.js";
 import { useEffect, useState } from "react";
-import { GroupContext } from "../contexts/GroupContext.js";
+import { GrupContext } from "../contexts/GrupContext.js";
 import { CantonContext } from "../contexts/CantonContext.js";
-import ListGroup from "react-bootstrap/ListGroup";
+import ListGrup from "react-bootstrap/ListGrup";
 import Button from "react-bootstrap/Button";
-import ListGroupItem from "react-bootstrap/esm/ListGroupItem.js";
+import ListGrupItem from "react-bootstrap/esm/ListGrupItem.js";
 
 function CantonManager() {
   const [isOpen, setIsOpen] = useState(false);
-  const { groupList } = useContext(GroupContext);
+  const { grupList } = useContext(GrupContext);
   const { cantonList } = useContext(CantonContext);
 
   const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
@@ -28,8 +28,8 @@ function CantonManager() {
 
   const canton = cantonList?.find((canton) => canton?.email == user.email);
   console.log(canton);
-  // const group = groupList?.map((group) =>group?.CantonId === canton.id);
-  // console.log(group)
+  // const grup = grupList?.map((grup) =>grup?.CantonId === canton.id);
+  // console.log(grup)
 
   const handleClick = () => {
     setIsOpen(true);
@@ -85,10 +85,10 @@ function CantonManager() {
                     type="button"
                     className="btn btn-success fs-6 w-100 m-1"
                     // data-bs-toggle="modal"
-                    // data-bs-target={"#addGroupModal"}
+                    // data-bs-target={"#addGrupModal"}
                     onClick={() => setIsOpen(!isOpen)}
                   >
-                    ADD Group
+                    ADD Grup
                   </button>
                   {/* <button
                 type="button"
@@ -113,7 +113,7 @@ function CantonManager() {
                     type="button"
                     // onClick={() => handleClick()}
                   >
-                    Groups
+                    Grups
                   </button>
                   <br></br>
                 </div>
@@ -123,13 +123,13 @@ function CantonManager() {
                   className="h-100"
                   id="form-div"
                   // className="modal fade"
-                  // id={"addGroupModal"}
+                  // id={"addGrupModal"}
                   // tabIndex="-1"
                   // aria-labelledby="exampleModalLabel"
                   // aria-hidden="true"
                 >
-                  {isOpen ? <AddGroup canton={canton} /> : null}
-                  <GroupList canton={canton} />
+                  {isOpen ? <AddGrup canton={canton} /> : null}
+                  <GrupList canton={canton} />
                 </div>
                 {/* <div
               id="schweiz"
@@ -138,7 +138,7 @@ function CantonManager() {
               <p className="text-white fw-bold">{canton.name}</p>
             </div>
             <div className="h-100" id="form-div">
-              <GroupList canton={canton}/>  
+              <GrupList canton={canton}/>  
             </div>
           </div>
         </div> */}

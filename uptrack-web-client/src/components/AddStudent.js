@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { StudentContext } from "../contexts/StudentContext.js";
-import { GroupContext } from "../contexts/GroupContext.js";
+import { GrupContext } from "../contexts/GrupContext.js";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 
-const AddStudent = ({showDetails, setShowDetails ,group}) => {
-  console.log(group)
+const AddStudent = ({ showDetails, setShowDetails, grup }) => {
+  console.log(grup);
 
-   const id = group.id;
+  const id = grup.id;
 
   const [student, setStudent] = useState({});
   const [studentList, setStudentList] = useState([]);
@@ -22,7 +22,7 @@ const AddStudent = ({showDetails, setShowDetails ,group}) => {
 
   useEffect(() => {
     getStudentList();
-  }, [] );
+  }, []);
 
   const handleOnChange = (e) => {
     setStudent({ ...student, [e.target.name]: e.target.value });
@@ -31,17 +31,15 @@ const AddStudent = ({showDetails, setShowDetails ,group}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     addStudent(student, id);
-  
+
     setStudentList((currentList) => {
       return [...studentList, student];
     });
 
-    setShowDetails(!showDetails)
+    setShowDetails(!showDetails);
     // getStudentList();
     // setStudentList(newStudentList);
-    setStudent("")
-   
-    
+    setStudent("");
   };
 
   const hideForm = () => {
@@ -63,10 +61,10 @@ const AddStudent = ({showDetails, setShowDetails ,group}) => {
     //         aria-label="Close"
     //       ></button>
     //     </div>
-   
+
     <div className="w-50 p-5">
       <form className="mb-4" onSubmit={handleSubmit}>
-        <div >
+        <div>
           <h6 color="blue">ogrenci bilgilerini giriniz</h6>
 
           <input
@@ -93,7 +91,7 @@ const AddStudent = ({showDetails, setShowDetails ,group}) => {
             placeholder="email"
             onChange={handleOnChange}
           />
-            <input
+          <input
             type="text"
             className="form-control mb-2 bg-light"
             name="img"
@@ -104,9 +102,9 @@ const AddStudent = ({showDetails, setShowDetails ,group}) => {
           {/* <input
             type="number"
             className="form-control mb-2 bg-light"
-            name="GroupId"
-            value={student.GroupId || ""}
-            placeholder="group no giriniz"
+            name="GrupId"
+            value={student.GrupId || ""}
+            placeholder="grup no giriniz"
             onChange={handleOnChange}
           /> */}
           {/* <button
@@ -126,8 +124,8 @@ const AddStudent = ({showDetails, setShowDetails ,group}) => {
           </button>
         </div>
       </form>
-    </div> 
-   
+    </div>
+
     // </div>
   );
 };

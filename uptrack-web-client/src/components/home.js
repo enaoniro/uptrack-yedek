@@ -5,7 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { UserContext } from "../contexts/UserContext";
 import Admin from "./Admin";
 import CantonManager from "./CantonManager";
-import GroupLeader from "./GroupLeader";
+import GrupLeader from "./GrupLeader";
 import Layout from "./Layout";
 import Container from "react-bootstrap/Container";
 
@@ -90,7 +90,7 @@ function Home() {
       <Container fluid className=" p-3 bg-white shadow-lg">
         {role === "admin" && <Admin />}
         {role === "canton manager" && <CantonManager />}
-        {role === "group leader" && <GroupLeader />}
+        {role === "grup leader" && <GrupLeader />}
       </Container>
     </>
   );
