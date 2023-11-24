@@ -11,10 +11,7 @@ import Task from "../models/TaskModel.js";
 
 const password = process.env.REACT_APP_PASSWORD;
 
-const sequelize = new Sequelize("users", "root", password, {
-  host: "localhost",
-  dialect: "mysql",
-});
+const sequelize = new Sequelize(`mysql://root:bCd5GEe-CDaECHfaEagd2bGHCd5Gf-3-@monorail.proxy.rlwy.net:17543/railway`);
 
 // const User = sequelize.define('User', {
 //     id: {
